@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>多肉知識</title>
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  </link>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- vue cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+
+  <!-- aos動畫效果 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- aos動畫效果 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- bubble_btn動畫效果 -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <script src="js/bubblebtn.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body onload="blogQuery()">
+  <!-- header開始，要放在body下面 -->
+  <div class="header_bg">
+    <div class="headers">
+      <div class="navs">
+        <a href="./main.html"><img src="img/logo.png" alt=""></a>
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+      </div>
+      <ol>
+        <li><a href="./shopCart.html"><i class="fas fa-shopping-basket"></i></a></li>
+        <li><a href="./php/login.php"><i class="fas fa-user"></i></a></li>
+        <li><a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+
+      </ol>
+      <div class="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- header結束 -->
+
+  <div class="full_wrapper">
+
+    <div class="blog_all_top">
+      <img src="./img/blogall/blogalltop.png" alt="">
+    </div>
+    <article>
+      <div class="bread">
+        <a href="./main.html">首頁</a> > <a>多肉知識</a>
+      </div>
+    </article>
+    <article class="article">
+      <div class='blogall_ul'>
+
+      </div>
+    </article>
+
+    <div class="ex"></div>
+    <div class="ex"></div>
+  </div>
+
+  <!-- 購物車 側邊欄  開始-->
+  <!-- <div class="order">
+    <i class="fas fa-window-close"></i>
+    <h2>購物清單</h2>
+    <div class="orderPith"></div>
+    <div class="order-custom">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="order_custom_con">
+        <img src="img/shopcart/assets_5.png" alt="">
+        <div class="txt">
+          <h4>黃金山脈-金 晃丸盆栽</h4>
+          <h2>賀卡訂製</h2>
+          <p>NT$1850</p>
+          <div id="app8">
+            <div class="shop">
+              <i @click="counter += -1" class="fa fa-minus" aria-hidden="true"></i>
+              <div class="counter">{{counter}}</div>
+              <i @click="counter += 1" class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order-custom-pro">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="order_custom_con_con">
+        <img src="img/shopcart/assets_5.png" alt="">
+        <div class="txt">
+          <h4>客製化多肉</h4>
+          <h2>賀卡訂製</h2>
+          <p>NT$1850</p>
+          <div id="app9">
+            <div class="shop">
+              <i @click="counter += -1" class="fa fa-minus" aria-hidden="true"></i>
+              <div class="counter">{{counter}}</div>
+              <i @click="counter += 1" class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail">
+        <h2>詳細內容</h2>
+        <p>黃金山脈多肉 x1</p>
+        <p>黃金山脈多肉 x1</p>
+        <p>黃金山脈多肉 x1</p>
+        <p>器皿-水泥器皿 x1</p>
+        <p>裝飾品-小蘑菇 x1</p>
+      </div>
+
+    </div>
+    <div class="amount">
+      <h2 class="coin">金額
+        <p>$3600</p>
+      </h2>
+      <h2 class="sale">優惠
+        <p>-＄20</p>
+      </h2>
+    </div>
+    <div class="total">
+      <h4>總金額</h4>
+      <p>$3580</p>
+    </div>
+    <a href=""></a>
+    <button class="checkbuy"> <a href="./shopCart.html">確定購買</a></button>
+  </div> -->
+
+  <!-- 購物車 側邊欄  結束-->
+
+
+  <!-- QA仙人掌開始，放在footer上面 -->
+  <section class="qa_pos">
+    <div class="qa_wrapper">
+      <img src="img/QA/QA_LOGO.png" alt="">
+    </div>
+
+    <div class="qaBg_wrapper" id="app">
+      <div class="qaBg">
+        <img src="img/QA/QA_close.png" alt="" class="cancel">
+        <ul>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+
+          <div class="cusQUS">{{message}}</div>
+          <div class="answer">we will hope you</div>
+        </ul>
+
+        <div class="cusQ">
+          <div class="adimit">
+            <input type="text" v-model="message">
+            <button class="btn">送出</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- QA仙人掌結束 -->
+
+
+
+
+
+
+  <!-- footer start -->
+  <footer>
+    <article>
+      <div class="brand_info">
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+
+        <ol>
+          <li><a ref=""><i class="fab fa-facebook-square"></i></a></li>
+          <li><a ref=""><i class="fab fa-youtube"></i></a></li>
+          <li><a ref=""><i class="fab fa-twitter"></i></a></li>
+        </ol>
+
+        <p>ⓒ Copyright Shimabara Shokuhin All Rights Reserved. </p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="logo_info">
+        <a href="main.html"><img src="img/icon_logo_footer.png" alt=""></a>
+        <p>tel : 02-2338-8365</p>
+        <p>e-mail : Succulents Monster@gmail.com </p>
+        <p>address : 104 台北市中山區南京東路三段219號</p>
+        <p>open : 週一至週日 11:00 – 18:30</p>
+
+      </div>
+
+    </article>
+
+  </footer>
+  <!-- footer end -->
+
+
+  <!-- 每一個頁面都要引入以下這兩個js -->
+  <script src="./js/shopcart.js"></script>
+  <script src="./js/header.js"></script>
+  <script src="./js/qa.js"></script>
+  <script>
+    function blogQuery(blog_all) {
+      $.ajax({
+        method: "POST",
+        url: "./php/blog_all.php",
+        data: {
+          title: blog_all
+        },
+        dataType: "text",
+        success: function(response) {
+          //更新html內容
+          document.getElementsByClassName('blogall_ul')[0].innerHTML = response;
+        },
+        error: function(exception) {
+          alert("發生錯誤: " + exception.status);
+        }
+      });
+    }
+  </script>
+
+</body>
+
+</html>
