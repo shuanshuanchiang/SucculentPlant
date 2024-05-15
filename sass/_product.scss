@@ -1,0 +1,334 @@
+// 引用
+//這個是取消全部樣式的css
+// @import "./reset";
+// @import "./var";
+//這個是bubble_btn的css，記得html要引用bubble_btn動畫效果的js & TweenMax
+// @import "./bubblebtn";
+
+//----------------共用scss開始-------------------------
+
+.btn {
+  @include btn;
+}
+
+// rwd
+// article {
+//   @include pad() {
+//     width: auto;
+//   }
+// }
+
+// img {
+//   @include pad() {
+//     max-width: 100%;
+//     height: auto;
+//   }
+// }
+
+// 動態
+.-shop-click {
+  background-color: map-get($color, "gray2");
+}
+
+.-show-flex {
+  display: flex;
+}
+
+.-show-block {
+  display: block;
+}
+
+article .-off {
+  display: none;
+}
+
+article .-heart {
+  color: map-get($color, "pink");
+}
+
+.product_card_style .-pro-border {
+  border: 5px solid #2f4f4f;
+}
+
+article .-pro-bb {
+  border-bottom: 2px solid;
+}
+
+.pro_nowshop {
+  outline: none;
+}
+
+// 開始
+.product_up {
+  @include flex() {
+    align-items: flex-start;
+  }
+
+  @include mobile() {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.product_left {
+  width: 50%;
+  @include mobile() {
+    width: 70%;
+  }
+  @include phone() {
+    width: 100%;
+  }
+  &_simg {
+    display: flex;
+    &_smpic {
+      margin-right: 40px;
+      width: 100px;
+    }
+    img {
+      cursor: pointer;
+    }
+    // }
+  }
+}
+
+.product_right {
+  width: 50%;
+  margin-left: 50px;
+  text-align: left;
+
+  @include mobile() {
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+.product_title {
+  font-size: map-get($fontsize, "big");
+  margin-bottom: 20px;
+}
+
+.product_tag {
+  @include flex() {
+    justify-content: flex-start;
+  }
+  &_cust,
+  &_new,
+  &_hot {
+    font-size: map-get($fontsize, "small");
+    color: #fff;
+    padding: 5px;
+    border: 1px solid;
+    margin: 0 5px;
+    margin-bottom: 20px;
+  }
+  &_new {
+    // color: map-get($color, "pink");
+    background: map-get($color, "pink");
+  }
+  &_hot {
+    // color: map-get($color, "yellow");
+    background: map-get($color, "yellow");
+  }
+}
+
+.product_word {
+  margin-bottom: 20px;
+}
+
+.product_price {
+  font-size: map-get($fontsize, "big");
+  margin-bottom: 20px;
+}
+
+.product_amount {
+  margin-bottom: 20px;
+  label {
+    margin-right: 10px;
+  }
+  button {
+    outline: none;
+    border: none;
+    background-color: transparent;
+  }
+  .fas {
+    cursor: pointer;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+  }
+
+  &_number {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+// 賀卡
+.product_cardcheck {
+  @include flex() {
+    justify-content: flex-start;
+  }
+  margin-bottom: 20px;
+  input {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
+
+.product_card {
+  display: flex;
+  flex-direction: column;
+  transition: 0.5s;
+  // display: none;
+  input {
+    padding: 5px 10px;
+    margin-bottom: 20px;
+  }
+  textarea {
+    margin-bottom: 20px;
+  }
+  &_style {
+    @include flex() {
+      flex-wrap: wrap;
+    }
+    li {
+      width: 45%;
+      margin: 10px;
+      // padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      border: 5px solid transparent;
+      @include pad() {
+        width: 45%;
+      }
+      @include mobile() {
+        width: 40%;
+      }
+    }
+  }
+  &_second {
+    display: flex;
+    a {
+      color: red;
+      font-weight: bold;
+    }
+  }
+}
+
+// 加入購物車按鈕樣式-開始
+.product_right .bubble_btnn {
+  margin: 40px 0;
+}
+
+.product_right .button--bubble {
+  width: 100%;
+  text-align: center;
+}
+
+// 按鈕寬度100%
+.lie {
+  width: 100%;
+}
+// 加入購物車按鈕樣式-結束
+
+// 收藏我的按鈕樣式
+// .product_right .btn_green {
+.product_right .product_collect {
+  a {
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid #2f4f4f;
+    color: #2f4f4f;
+    margin: 0;
+    margin-left: auto;
+    @include flex;
+  }
+  .fa-heart {
+    margin-right: 20px;
+    font-size: map-get($fontsize, "big");
+  }
+}
+
+// product_downa
+.product_tabs {
+  padding-bottom: 20px;
+  @include flex;
+  li {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 33.33%;
+    font-size: map-get($fontsize, "big");
+    @include phone() {
+      font-size: 2rem;
+    }
+  }
+}
+
+.product_content {
+  &_word {
+    font-size: map-get($fontsize, "larger");
+  }
+  &_info p {
+    text-align: left;
+  }
+}
+
+.product_content_assess {
+  ol li {
+    @include flex() {
+      justify-content: space-between;
+    }
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 5px 20px;
+    // width: 960px;
+    margin: 10px 20px;
+
+    @include phone() {
+      // width: 100%;
+      margin: 10px 0;
+    }
+    @include phone() {
+      padding: 5px 10px;
+    }
+  }
+
+  // display: none;
+}
+
+.product_assess_star {
+  margin-right: auto;
+  margin-left: 50px;
+  .fa-star {
+    color: map-get($color, "yellow");
+  }
+  @include phone() {
+    margin-left: 10px;
+  }
+}
+
+// 推薦商品背景
+.recommend {
+  background-image: url(../img/product/shop_hot_bg.png);
+  background-position: center 0;
+}
+
+.product_other {
+  h2 {
+    text-align: left;
+    font-size: map-get($fontsize, "big");
+    padding-bottom: 20px;
+  }
+  &_hot {
+    padding-bottom: 25px;
+    // @include flex;
+    li {
+      width: 25%;
+      padding: 10px;
+    }
+  }
+}

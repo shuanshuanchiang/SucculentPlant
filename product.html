@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  </link>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- vue cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+
+  <!-- aos動畫效果 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <!-- 自己的css -->
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    function change_title() {
+      document.title = 'new title';
+    }
+    change_title()
+  </script>
+</head>
+
+<body>
+  <!-- header開始，要放在body下面 -->
+  <div class="header_bg">
+    <div class="headers">
+      <div class="navs">
+        <a href="./main.html"><img src="img/logo.png" alt=""></a>
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+      </div>
+      <ol>
+        <li><a href="./shopCart.html"><i data-content="0"  class="fas fa-shopping-basket"></i></a></li>
+        <li><a href="./php/login.php"><i class="fas fa-user" ></i></a></li>
+        <li><a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+
+      </ol>
+      <div class="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- header結束 -->
+
+
+  <!-- test -->
+
+  <!-- section 的範圍為全螢幕，主要用來放background-image的-->
+  <!-- 要新增背景圖請另外加class ex:class="full_wrapper" -->
+  <section id="presult">
+
+    <!-- 麵包屑在這 -->
+    <article>
+      <div class="ex"></div>
+      <!-- 用這個來推header的間隔 -->
+      <div class="bread ">
+        <a href="./main.html">首頁</a> > <a href="./shop.html">多肉商城</a> > <a v-if="list[0]!=null" ref="">{{list[0].productName}}</a>
+      </div>
+    </article>
+
+    <article v-for="pli in list" class="product_up">
+      <div class="product_left">
+        <div class="product_left_bimg">
+          <!-- <img  src="./img/product/ss_A01_1.png" alt=""> -->
+          <img :src="'img/product/'+pli.productImg01" alt="" /></a>
+        </div>
+        <ol class="product_left_simg">
+          <li class="product_left_simg_smpic"><img :src="'img/product/'+pli.productImg01" alt="" /></a>
+          </li>
+
+          <li class="product_left_simg_smpic"><img :src="'img/product/'+pli.productImg02" alt="" /></a>
+          </li>
+          <li class="product_left_simg_smpic"><img :src="'img/product/'+pli.productImg03" alt="" /></a>
+          </li>
+        </ol>
+      </div>
+
+      <div class="product_right">
+        <h1 class="product_title"> {{pli.productName}} </h1>
+        <!-- <ol class="product_tag"> -->
+        <!-- <li class="product_card_tag_cust">可客製</li> -->
+        <!-- <li class="product_tag_new">新上市</li> -->
+        <!-- <li class="product_tag_hot">人氣NO.1</li> -->
+        <!-- </ol> -->
+        <div class="product_word">
+          <p>尺寸：{{pli.productSize}}</p>
+          <!-- <p>擁有一盆紓壓療癒的多肉盆栽好幸福。</p> -->
+        </div>
+        <p class="product_price">${{pli.productPrice}}</p>
+        <div class="product_amount">
+          <label for="">數量</label>
+          <button @click='handleMinus'>
+          <i  class="fas fa-minus "></i>
+          </button>
+          <input type="number" name="quantity" :value="count" class="product_amount_number">
+          <button>
+          <i @click='handlePlus' class="fas fa-plus"></i>
+          </button>
+        </div>
+        <div class="product_cardcheck">
+          <input id="product_card_check" type="checkbox" v-model="checked">
+          <label for="">賀卡訂製 (約10x10cm)</label>
+        </div>
+
+        <div class="product_card " v-show="checked">
+          <label for="">收禮人 / 公司名 / 店名資訊</label>
+          <input v-model.trim="cardReceivePeople" type="text" maxlength="30" name="cardReceivePeople" required>
+          <label for="">賀詞內容</label>
+          <textarea v-model.trim="cardSendText" name="cardSendText" id="" cols="2" rows="4" placeholder="限制字數30字以內" maxlength="30" required></textarea>
+          <!-- <input type="text" placeholder="限制字數30字以內" maxlength="30"> -->
+          <label for="">送禮人資訊</label>
+          <input v-model.trim="cardSendPeople" type="text" maxlength="30" name="cardSendPeople" required>
+          <label for="">賀卡樣式(4選1)</label>
+          <ol class="product_card_style">
+            <li :class="{'-pro-border': cardselect == '幸福青鳥'}" @click="cardselect ='幸福青鳥'" class="product_card_li" data-card="1"><img src="./img/product/card_01.png" alt="">Ａ.幸福青鳥</li>
+            <li :class="{'-pro-border': cardselect == '綠意盎然'}" @click="cardselect ='綠意盎然'" class="product_card_li" data-card="2"><img src="./img/product/card_02.png" alt="">B.綠意盎然</li>
+            <li :class="{'-pro-border': cardselect == '小草黃了'}" @click="cardselect ='小草黃了'" class="product_card_li" data-card="3"><img src="./img/product/card_03.png" alt="">C.小草黃了</li>
+            <li :class="{'-pro-border': cardselect == '銀色大地'}" @click="cardselect ='銀色大地'" class="product_card_li" data-card="4"><img src="./img/product/card_04.png" alt="">D.銀色大地</li>
+          </ol>
+          <!-- <p class="product_card_second">還想購買第二張賀卡嗎？ 點選前往<a href="./product.html?pro=34.html">賀卡頁面</a></p> -->
+
+        </div>
+
+        <!-- 綠色bubble按鈕 start -->
+        <div class="bubble_btnn">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                  result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" />
+              </filter>
+            </defs>
+          </svg>
+
+          <span class="button--bubble__container lie">
+            <a  @click="addCar(pli)" href="#" class="button button--bubble shop_btn">
+              加入購物車
+            </a>
+            <span class="button--bubble__effect-container">
+              <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+
+          <span class="button effect-button"></span>
+
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+          </span>
+          </span>
+        </div>
+        <!-- 綠色bubble按鈕 end -->
+
+        <!-- 黃色bubble按鈕 start -->
+        <div class="bubble_btnn">
+          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+            <defs>
+              <filter id="goo">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                  result="goo" />
+                <feComposite in="SourceGraphic" in2="goo" />
+              </filter>
+            </defs>
+          </svg>
+          <span class="button--bubble__container lie">
+            <!-- <a  @click="addCar(pli)" href="./shopCart.html" class="button_y button--bubble">
+              立即購買
+            </a> -->
+            <button :class="{'active': cardchose == '直接購買'}" @click="addCar(pli,$event)"  class="button_y button--bubble pro_nowshop"> 立即購買</button>
+            <span class="button--bubble__effect-container">
+              <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+          <span class="circle top-left"></span>
+
+          <span class="button effect-button"></span>
+
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+          <span class="circle bottom-right"></span>
+          </span>
+          </span>
+        </div>
+        <!-- 黃色bubble按鈕 end -->
+        <!-- 一般的綠按鈕 -->
+        <!-- 加入我的收藏 -->
+        <!-- <div class="btn_green product_collect">
+          <a class="shop_card_heart" ref=""><i class="fas fa-heart"></i>加入我的收藏</a>
+        </div> -->
+      </div>
+
+    </article>
+
+    <article class="product_down">
+      <ol class="product_tabs">
+        <li><a class="product_tabs_link " href="#pro_info">商品描述</a></li>
+        <li><a class="product_tabs_link" href="#pro_notice">訂購需知</a></li>
+        <!-- <li><a class="product_tabs_link" href="#pro_assess">購買評價</a></li> -->
+      </ol>
+      <ul class="product_content">
+        <li id="pro_info" class="product_content_info pro_con">
+          <p v-for="pli in list" class="product_content_word">
+            {{pli.productDes}}
+            <!-- │仙人掌盆栽│ <br>
+            商品詳細資訊 :尺寸→ 20cm<br>
+
+            商品使用方式 :<br>
+            請將多肉盆栽擴香石放在您希望香香的地方(浴室、房間、車上.....等<br>
+            香味持久度不一定，須看您的空間大小，<br>
+            正常房間大小約2~3星期，<br>
+            待香味淡去，可以再添加自己喜歡的精油、香精或香水，<br>
+            (記得從背面滴喔!! 避免有些香精有加色素，會影響美觀的!!) -->
+
+          </p>
+        </li>
+        <li id="pro_notice" class="product_content_notice pro_con">
+          <p class="product_content_word">
+            交期為下單付款後25個工作天不含假日及例假日，<br> 25個工作天以內會將商品寄出。
+          </p>
+        </li>
+        <!-- <li id="pro_assess" class="product_content_assess pro_con">
+          <ol>
+            <li>
+              <p>文XX君</p>
+              <div class="product_assess_star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <p>2021/02/04</p>
+            </li>
+
+            <li>
+              <p>文XX君</p>
+              <div class="product_assess_star">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <p>2021/02/04</p>
+            </li>
+          </ol>
+        </li> -->
+      </ul>
+
+
+
+      <div class="ex"></div>
+
+      <section class="recommend">
+    </article>
+    <article class="product_other">
+      <div class="ex"></div>
+
+      <h2>推薦商品</h2>
+      <div class="swiper-container">
+        <ul class="product_other_hot swiper-wrapper">
+          <li v-if="hotpro[0]!=null" class="swiper-slide">
+            <a :href="'product.html?pro='+hotpro[0].productNO">
+              <img :src="'img/product/'+hotpro[0].productImg01" alt=""> {{hotpro[0].productName}}
+            </a>
+          </li>
+          <li v-if="hotpro[1]!=null" class="swiper-slide">
+            <a :href="'product.html?pro='+hotpro[1].productNO">
+              <img :src="'img/product/'+hotpro[1].productImg01" alt=""> {{hotpro[1].productName}}
+            </a>
+          </li>
+          <li v-if="hotpro[2]!=null" class="swiper-slide">
+            <a :href="'product.html?pro='+hotpro[2].productNO">
+              <img :src="'img/product/'+hotpro[2].productImg01" alt=""> {{hotpro[2].productName}}
+            </a>
+          </li>
+          <li v-if="hotpro[3]!=null" class="swiper-slide">
+            <a :href="'product.html?pro='+hotpro[3].productNO">
+              <img :src="'img/product/'+hotpro[3]['productImg01']" alt=""> {{hotpro[3].productName}}
+            </a>
+          </li>
+          <li v-if="hotpro[4]!=null" class="swiper-slide">
+            <a :href="'product.html?pro='+hotpro[4].productNO">
+              <img :src="'img/product/'+hotpro[4].productImg01" alt=""> {{hotpro[4].productName}}
+            </a>
+          </li>
+          <li v-if="hotpro[5]!=null" class="swiper-slide">
+            <a :href="'product.html?pro='+hotpro[5].productNO">
+              <img :src="'img/product/'+hotpro[5].productImg01" alt=""> {{hotpro[5].productName}}
+            </a>
+          </li>
+        </ul>
+        <div class="swiper-pagination"></div>
+      </div>
+
+    </article>
+    </article>
+    <!-- 用來調整上下間隔高度的，高度目前設定為100px，一定要放在section裡 -->
+    <div class="ex"></div>
+    </section>
+  </section>
+
+  <!-- QA仙人掌開始，放在footer上面 -->
+  <section class="qa_pos">
+    <div class="qa_wrapper">
+      <img src="img/QA/QA_LOGO.png" alt="">
+    </div>
+
+    <div class="qaBg_wrapper" id="app">
+      <div class="qaBg">
+        <img src="img/QA/QA_close.png" alt="" class="cancel">
+        <ul>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+
+          <div class="cusQUS">{{message}}</div>
+          <div class="answer">we will hope you</div>
+        </ul>
+
+        <div class="cusQ">
+          <div class="adimit">
+            <input type="text" v-model="message">
+            <button class="btn">送出</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- QA仙人掌結束 -->
+
+
+
+
+
+
+  <!-- footer start -->
+  <footer>
+    <article>
+      <div class="brand_info">
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+
+        <ol>
+          <li><a ref=""><i class="fab fa-facebook-square"></i></a></li>
+          <li><a ref=""><i class="fab fa-youtube"></i></a></li>
+          <li><a ref=""><i class="fab fa-twitter"></i></a></li>
+        </ol>
+
+        <p>ⓒ Copyright Shimabara Shokuhin All Rights Reserved. </p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="logo_info">
+        <a href="main.html"><img src="img/icon_logo_footer.png" alt=""></a>
+        <p>tel : 02-2338-8365</p>
+        <p>e-mail : Succulents Monster@gmail.com </p>
+        <p>address : 104 台北市中山區南京東路三段219號</p>
+        <p>open : 週一至週日 11:00 – 18:30</p>
+
+      </div>
+
+    </article>
+
+  </footer>
+  <!-- footer end -->
+
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- aos動畫效果 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- bubble_btn動畫效果 -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <!-- <script src="js/bubblebtn.js"></script> -->
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- 自已的js -->
+  <script src="./js/product.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    // swiper搬移到mounted(){}
+    // var swiper = new Swiper('.swiper-container', {
+    //       slidesPerView: 1,
+    //       spaceBetween: 0,
+    //       autoplay: {
+    //         delay: 3500,
+    //         disableOnInteraction: false,
+    //       },
+    //       keyboard: {
+    //         enabled: true,
+    //       },
+    //       pagination: {
+    //         el: '.swiper-pagination',
+    //         clickable: true,
+    //       },
+    //       navigation: {
+    //         nextEl: '.swiper-button-next',
+    //         prevEl: '.swiper-button-prev',
+    //       },
+    //       breakpoints: {
+    //         428: {
+    //           slidesPerView: 2,
+    //           spaceBetween: 0,
+    //         },
+    //         768: {
+    //           slidesPerView: 3,
+    //           spaceBetween: 0,
+    //         },
+
+    //         990: {
+    //           slidesPerView: 4,
+    //           spaceBetween: 10,
+    //           slidesPerGroup: 3,
+
+    //         },
+
+    //       }
+    //     });
+  </script>
+  <!-- 每一個頁面都要引入以下這兩個js -->
+  <script src="./js/header.js"></script>
+  <script src="./js/qa.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js' integrity='sha512-YXLGLsQBiwHPHLCAA9npZWhADUsHECjkZ71D1uzT2Hpop82/eLnmFb6b0jo8pK4T0Au0g2FETrRJNblF/46ZzQ==' crossorigin='anonymous'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js' integrity='sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==' crossorigin='anonymous'></script>
+
+  <script>
+    const pvm = new Vue({
+      el: '#presult',
+      data: {
+        list: [],
+        hot: [],
+        newlist: [],
+        count: 1,
+        checked: false,
+        cardReceivePeople: "",
+        cardSendText: "",
+        cardSendPeople: "",
+        itemStorage: [],
+        cardselect: '',
+        cardchose: '',
+      },
+      methods: {
+        handlePlus() {
+          this.count++;
+        },
+        handleMinus() {
+          if (this.count > 1) {
+            this.count--;
+          }
+        },
+
+        // shop購物車
+        addCar(pli, event) {
+          const vm = this
+
+          if (vm.checked == true) {
+            // if(vm.cardchose =='直接購買'){}
+            // if(event){
+            //   console.log("123")
+            // }
+            if (vm.cardReceivePeople == "" || vm.cardSendText == "" || vm.cardSendPeople == "") {
+              alert(`您好，您的賀卡資訊尚未寫`)
+
+            } else if (vm.cardselect == "") {
+              alert(`您尚未選擇賀卡樣式喔！`)
+            } else if (event) {
+              add()
+              window.location = "./shopCart.html"
+            } else {
+              add()
+              alert("成功加入購物車")
+              vm.count = 1
+              vm.cardReceivePeople = ""
+              vm.cardSendText = ""
+              vm.cardSendPeople = ""
+              vm.cardselect = ""
+            }
+          } else if (event) {
+            add()
+            window.location = "./shopCart.html"
+          } else {
+            add()
+            alert("成功加入購物車")
+            vm.count = 1
+          }
+          // vm.count++
+          function add() {
+            var produ = {
+                pro_id: pli.productNO, //產品ID
+                pro_name: pli.productName, //產品名稱
+                pro_price: pli.productPrice, //產品價錢
+                pro_count: vm.count, //產品數量
+                pro_img: pli.productImg01, //產品照片
+                pro_cardReceivePeople: vm.cardReceivePeople, //卡片收禮人
+                pro_cardSendText: vm.cardSendText, //卡片內容
+                pro_cardSendPeople: vm.cardSendPeople, //卡片送禮人
+                pro_cardselect: vm.cardselect, //卡片樣式
+                pro_cardcustom: vm.checked
+              }
+              // 先檢查有無localStorage
+            let shopcart = JSON.parse(localStorage.getItem("itemStorage"))
+              // console.log(shopcart)
+            if (shopcart == null) { //如果沒有就賦予
+              vm.itemStorage.push(produ) //給予空陣列儲存
+              localStorage.setItem("itemStorage", JSON.stringify(vm.itemStorage)) //物件轉字串
+            } else { //判斷先前的商品有無重複
+              var space = shopcart.some(function(item) {
+                  return item.pro_id === produ.pro_id && item.pro_cardReceivePeople === produ.pro_cardReceivePeople;
+                })
+                // console.log(space)
+              if (space) {
+                for (i = 0; i < shopcart.length; i++) {
+                  if (shopcart[i].pro_id == produ.pro_id && shopcart[i].pro_cardReceivePeople == produ.pro_cardReceivePeople) {
+                    shopcart[i].pro_count += vm.count
+                  }
+                }
+              } else {
+                shopcart.push(produ)
+              }
+              localStorage.setItem("itemStorage", JSON.stringify(shopcart)) //物件轉字串
+                // console.log(vm.itemStorage)
+            }
+            // alert("成功加入購物車")
+          }
+
+        },
+      },
+      // watch:{
+      //   cardtext(){
+      //     if(this.cardtext =""){
+      //       alert(123)
+      //     }
+      //   }
+      // },
+
+      computed: {
+        hotpro() {
+          const vm = this
+          let alldata = []
+          alldata = this.hot
+          let len = alldata.length
+          let range = 5
+          let newlist = []
+            // console.log(len)
+          for (i = 0; i < range; i++) {
+            let num = Math.floor(Math.random(alldata) * len);
+            newlist.push(alldata[num]);
+          }
+          return newlist;
+        },
+
+
+      },
+
+      // beforeMount(){
+      // created(){
+      mounted() {
+        // 抓取網址ID
+        const self = this;
+        const urlParams = new URLSearchParams(location.search);
+        const pdNum = urlParams.get('pro')
+          // console.log(self)
+        axios
+          .get('./php/product.php', {
+            params: {
+              pdNum
+            }
+          })
+          .then(response => {
+            //成功時的處理函數
+            // console.log(res)
+            const result = response.data.filter(product => product.productNO === pdNum);
+            // console.log(Math.floor(Math.random(hotpro)*))
+            // console.log(Math.random(hotpro)*6)
+            this.list = result
+            this.hot = response.data
+              // let len =response.data.length
+              //   let ar =[]
+              // // console.log(len)
+              // for(i=0; i<5;i++) {
+              //  let num = Math.floor(Math.random(response.data)*len)
+              //   ar.push(response.data[num])
+              // }
+              // console.log(ar)
+              // let ne = Math.floor(Math.random(response.data))
+
+            // console.log(result)
+            document.title = result[0].productName
+              // document.getElementsByTagName('meta')["description"].content = result[0].productDes;
+            document.getElementsByTagName('meta')["description"].content = '';
+            // console.log(result[0].productDes)
+          })
+          .catch(error => {
+            //失敗時的處理函數
+            console.log(error)
+          })
+      },
+      // mounted(){
+      updated() {
+        // s
+        var swiper = new Swiper('.swiper-container', {
+          slidesPerView: 1,
+          spaceBetween: 0,
+          autoplay: {
+            delay: 3500,
+            disableOnInteraction: false,
+          },
+          keyboard: {
+            enabled: true,
+          },
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+          breakpoints: {
+            428: {
+              slidesPerView: 2,
+              spaceBetween: 0,
+            },
+            768: {
+              slidesPerView: 3,
+              spaceBetween: 0,
+            },
+
+            990: {
+              slidesPerView: 4,
+              spaceBetween: 10,
+              slidesPerGroup: 3,
+            },
+
+          }
+        });
+        // e
+
+        // bubble_btn動畫效果
+        // s
+        $(document).ready(function() {
+          $(".button--bubble").each(function() {
+            var $circlesTopLeft = $(this).parent().find(".circle.top-left");
+            var $circlesBottomRight = $(this).parent().find(".circle.bottom-right");
+
+            var tl = new TimelineLite();
+            var tl2 = new TimelineLite();
+
+            var btTl = new TimelineLite({
+              paused: true
+            });
+
+            tl.to($circlesTopLeft, 1.2, {
+              x: -25,
+              y: -25,
+              scaleY: 2,
+              ease: SlowMo.ease.config(0.1, 0.7, false),
+            });
+            tl.to($circlesTopLeft.eq(0), 0.1, {
+              scale: 0.2,
+              x: "+=6",
+              y: "-=2"
+            });
+            tl.to(
+              $circlesTopLeft.eq(1),
+              0.1, {
+                scaleX: 1,
+                scaleY: 0.8,
+                x: "-=10",
+                y: "-=7"
+              },
+              "-=0.1"
+            );
+            tl.to(
+              $circlesTopLeft.eq(2),
+              0.1, {
+                scale: 0.2,
+                x: "-=15",
+                y: "+=6"
+              },
+              "-=0.1"
+            );
+            tl.to($circlesTopLeft.eq(0), 1, {
+              scale: 0,
+              x: "-=5",
+              y: "-=15",
+              opacity: 0,
+            });
+            tl.to(
+              $circlesTopLeft.eq(1),
+              1, {
+                scaleX: 0.4,
+                scaleY: 0.4,
+                x: "-=10",
+                y: "-=10",
+                opacity: 0
+              },
+              "-=1"
+            );
+            tl.to(
+              $circlesTopLeft.eq(2),
+              1, {
+                scale: 0,
+                x: "-=15",
+                y: "+=5",
+                opacity: 0
+              },
+              "-=1"
+            );
+
+            var tlBt1 = new TimelineLite();
+            var tlBt2 = new TimelineLite();
+
+            tlBt1.set($circlesTopLeft, {
+              x: 0,
+              y: 0,
+              rotation: -45
+            });
+            tlBt1.add(tl);
+
+            tl2.set($circlesBottomRight, {
+              x: 0,
+              y: 0
+            });
+            tl2.to($circlesBottomRight, 1.1, {
+              x: 30,
+              y: 30,
+              ease: SlowMo.ease.config(0.1, 0.7, false),
+            });
+            tl2.to($circlesBottomRight.eq(0), 0.1, {
+              scale: 0.2,
+              x: "-=6",
+              y: "+=3"
+            });
+            tl2.to(
+              $circlesBottomRight.eq(1),
+              0.1, {
+                scale: 0.8,
+                x: "+=7",
+                y: "+=3"
+              },
+              "-=0.1"
+            );
+            tl2.to(
+              $circlesBottomRight.eq(2),
+              0.1, {
+                scale: 0.2,
+                x: "+=15",
+                y: "-=6"
+              },
+              "-=0.2"
+            );
+            tl2.to($circlesBottomRight.eq(0), 1, {
+              scale: 0,
+              x: "+=5",
+              y: "+=15",
+              opacity: 0,
+            });
+            tl2.to(
+              $circlesBottomRight.eq(1),
+              1, {
+                scale: 0.4,
+                x: "+=7",
+                y: "+=7",
+                opacity: 0
+              },
+              "-=1"
+            );
+            tl2.to(
+              $circlesBottomRight.eq(2),
+              1, {
+                scale: 0,
+                x: "+=15",
+                y: "-=5",
+                opacity: 0
+              },
+              "-=1"
+            );
+
+            tlBt2.set($circlesBottomRight, {
+              x: 0,
+              y: 0,
+              rotation: 45
+            });
+            tlBt2.add(tl2);
+
+            btTl.add(tlBt1);
+            btTl.to(
+              $(this).parent().find(".button.effect-button"),
+              0.8, {
+                scaleY: 1.1
+              },
+              0.1
+            );
+            btTl.add(tlBt2, 0.2);
+            btTl.to(
+              $(this).parent().find(".button.effect-button"),
+              1.8, {
+                scale: 1,
+                ease: Elastic.easeOut.config(1.2, 0.4)
+              },
+              1.2
+            );
+
+            btTl.timeScale(2.6);
+
+            $(this).on("mouseover", function() {
+              btTl.restart();
+            });
+          });
+        });
+
+        // e
+      },
+    })
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>多肉商城</title>
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  </link>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- vue cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+
+  <!-- aos動畫效果 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <!-- 自己的css -->
+  <link rel="stylesheet" href="css/style.css" />
+
+
+
+</head>
+<!-- header結束 -->
+
+<body>
+  <!-- header開始，要放在body下面 -->
+  <div class="header_bg">
+    <div class="headers">
+      <div class="navs">
+        <a href="./main.html"><img src="img/logo.png" alt=""></a>
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+      </div>
+      <ol>
+        <li><a href="./shopCart.html"><i class="fas fa-shopping-basket"></i></a></li>
+        <li><a href="./php/login.php"><i class="fas fa-user member_btn"></i></a></li>
+        <li><a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+      </ol>
+      <div class="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+  <section id="result" calss="shop">
+    <!-- 產品輪播banner -->
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="shop_banner swiper-slide"></div>
+        <div class="shop_banner shop_b1 swiper-slide"></div>
+        <div class="shop_banner shop_b2 swiper-slide"></div>
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+    <!-- 麵包屑 -->
+    <article>
+      <div class="bread pro_bread">
+        <a href="./main.html">首頁</a> > <a ref="">多肉商城</a>
+      </div>
+    </article>
+    <ol class="shop_note">
+      <li><a href="">全館含運</a></li>
+      <li><a href="custom.html">多肉客製</a></li>
+    </ol>
+    <!-- 篩選 -->
+    <article class="shop_filterbox">
+      <ul class="shop_mainfilter">
+        <li><a class="btn " :class="{'-shop-click': visibility == 'all'}" @click="visibility ='all'" href="">全部商品<img src="./img/shop/house.png" alt=""></a></li>
+        <li><a class="btn shop_succulents" :class="{'active': visibility == '多肉專區'}" @click="visibility ='多肉專區'" href="">多肉專區<img src="./img/shop/plant_01-1.png" alt=""></a></li>
+        <li><a class="btn" :class="{'active': visibility == '裝飾配件'}" @click="visibility ='裝飾配件'" href="">裝飾配件<img src="./img/shop/house_2.png" alt=""></a></li>
+        <li><a class="btn" :class="{'active': visibility == '盆栽器皿'}" @click="visibility ='盆栽器皿'" href="">盆栽器皿<img src="./img/shop/basin.png" alt=""></a></li>
+      </ul>
+      <ul class="shop_childfilter -off">
+        <li><a class="btn" @click="visibility ='景天科'" href="">景天科<img src="./img/shop/icon2.png" alt=""></a></li>
+        <li><a class="btn" @click="visibility ='仙人掌科'" href="">仙人掌科 <img src="./img/shop/icon4.png" alt=""></a></li>
+        <li><a class="btn" @click="visibility ='百合科'" href="">百合科<img src="./img/shop/icon10.png" alt=""></a></li>
+        <li><a class="btn" @click="visibility ='菊科'" href="">菊科 <img src="./img/shop/icon5.png" alt=""></a></li>
+      </ul>
+      <div class="shop_otherfilter">
+        <div class="shop_otherfilter_select">
+          <!-- <select name="" id="" v-model="sortBy">
+            <option disabled value="" selected="selected">請選擇照顧難易度</option>
+            <option value="takeeasy">照顧難易度　易到難</option>
+            <option value="takehard">照顧難易度　難到易</option>
+          </select>
+
+          <select name="" id="">
+            <option disabled value="" selected="selected">請選擇價格高低</option>
+            <option value="">價格　低到高</option>
+            <option value="">價格　高到低</option>
+          </select> -->
+        </div>
+        <div class="shop_search">
+          <input v-model.trim="filterText" type="search">
+          <button @click="visibility ='search'"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 商品 -->
+    <article>
+      <ul class="shop_main">
+        <!-- <li v-for="item in data" class="shop_card"> -->
+        <li v-for="(item,key) in filterData[currentPage]" :key="item.productName" class="shop_card">
+          <!-- <li v-for="(item,key) in searchData ":key="item.productName" class="shop_card"> -->
+
+          <!-- <li v-for="(item,key) in categoryData" :key="item.id"  class="shop_card"> -->
+          <div class="shop_card_img">
+            <!-- <ol class="shop_card_tag"> -->
+            <!-- <li class="shop_card_tag_cust">可客製</li> -->
+            <!-- <li data-tag="tag_new" class="shop_card_tag_new">新上市</li> -->
+            <!-- <li class="shop_card_tag_hot">人氣NO.1</li> -->
+            <!-- </ol> -->
+            <!-- <button class="shop_card_heart"><i class="fas fa-heart"></i></button> -->
+            <a :href="'product.html?pro='+item.productNO">
+              <img :src="'img/product/'+item.productImg01" alt="" /></a>
+          </div>
+          <h3 class="shop_card_title">{{item.productName}}</h3>
+          <ol :data-take=item.plantLive class="shop_card_take">
+            <li><i class="fas fa-leaf"></i></li>
+            <li><i class="fas fa-leaf"></i></li>
+            <li><i class="fas fa-leaf"></i></li>
+          </ol>
+          <p class="shop_card_price">${{item.productPrice}}</p>
+
+          <!-- <button class="btn shop_card_addcart">加入購物車</button> -->
+          <!-- 綠色bubble按鈕 start -->
+          <div class="bubble_btnn  addButton">
+            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+              <defs>
+                <filter id="goo">
+                  <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                  <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                    result="goo" />
+                  <feComposite in="SourceGraphic" in2="goo" />
+                </filter>
+              </defs>
+            </svg>
+            <span class="button--bubble__container lie">
+              <a @click="addCar(item)" href="#" class="button button--bubble shop_btn">
+                加入購物車
+              </a>
+              <span class="button--bubble__effect-container">
+                <span class="circle top-left"></span>
+            <span class="circle top-left"></span>
+            <span class="circle top-left"></span>
+            <span class="button effect-button"></span>
+            <span class="circle bottom-right"></span>
+            <span class="circle bottom-right"></span>
+            <span class="circle bottom-right"></span>
+            </span>
+            </span>
+          </div>
+          <!-- 綠色bubble按鈕 end -->
+        </li>
+      </ul>
+
+      <!-- 頁數 -->
+      <ul class='shop_pagination'>
+        <!-- <li><a href="#" @click.prevent="currentPage =0"> -->
+        <li>
+          <a href="#" @click.prevent="prev">
+            <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li :class="{page_active:currentPage === page - 1}" v-for="page in filterData.length " :key="page">
+          <a href="#" @click.prevent="currentPage = (page -1)">{{page}}</a>
+        </li>
+        <!-- <li><a href="">2</a></li>
+        <li><a href="">3</a></li>
+        <li><a href="">4</a></li> -->
+        <li>
+          <a href="#" @click.prevent="next()">
+            <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+          </a>
+        </li>
+      </ul>
+      </div>
+    </article>
+    <div class="ex"></div>
+    <div class="ex"></div>
+  </section>
+
+  <!-- 購物車 側邊欄  開始-->
+  <div class="order">
+    <i class="fas fa-window-close"></i>
+    <h2>購物清單</h2>
+    <div class="orderPith"></div>
+    <div class="order-custom">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="order_custom_con">
+        <img src="img/shopcart/assets_5.png" alt="">
+        <div class="txt">
+          <h4>黃金山脈-金 晃丸盆栽</h4>
+          <h2>賀卡訂製</h2>
+          <p>NT$1850</p>
+          <div id="app8">
+            <div class="shop">
+              <i @click="counter += -1" class="fa fa-minus" aria-hidden="true"></i>
+              <div class="counter">{{counter}}</div>
+              <i @click="counter += 1" class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="order-custom-pro">
+      <i class="fa fa-times" aria-hidden="true"></i>
+      <div class="order_custom_con_con">
+        <img src="img/shopcart/assets_5.png" alt="">
+        <div class="txt">
+          <h4>客製化多肉</h4>
+          <h2>賀卡訂製</h2>
+          <p>NT$1850</p>
+          <div id="app9">
+            <div class="shop">
+              <i @click="counter += -1" class="fa fa-minus" aria-hidden="true"></i>
+              <div class="counter">{{counter}}</div>
+              <i @click="counter += 1" class="fa fa-plus" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail">
+        <h2>詳細內容</h2>
+        <p>黃金山脈多肉 x1</p>
+        <p>黃金山脈多肉 x1</p>
+        <p>黃金山脈多肉 x1</p>
+        <p>器皿-水泥器皿 x1</p>
+        <p>裝飾品-小蘑菇 x1</p>
+      </div>
+
+    </div>
+    <div class="amount">
+      <h2 class="coin">金額
+        <p>$3600</p>
+      </h2>
+      <h2 class="sale">優惠
+        <p>-＄20</p>
+      </h2>
+    </div>
+    <div class="total">
+      <h4>總金額</h4>
+      <p>$3580</p>
+    </div>
+    <a href=""></a>
+    <button class="checkbuy"> <a href="./shopCart.html">確定購買</a></button>
+  </div>
+  <!-- 購物車 側邊欄  結束-->
+
+  <!-- QA仙人掌開始，放在footer上面 -->
+  <section class="qa_pos">
+    <div class="qa_wrapper">
+      <img src="img/QA/QA_LOGO.png" alt="">
+    </div>
+
+    <div class="qaBg_wrapper" id="app">
+      <div class="qaBg">
+        <img src="img/QA/QA_close.png" alt="" class="cancel">
+        <ul>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+
+          <div class="cusQUS">{{message}}</div>
+          <div class="answer">we will hope you</div>
+        </ul>
+
+        <div class="cusQ">
+          <div class="adimit">
+            <input type="text" v-model="message">
+            <button class="btn">送出</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- QA仙人掌結束 -->
+
+
+
+
+
+
+  <!-- footer start -->
+  <footer>
+    <article>
+      <div class="brand_info">
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+
+        <ol>
+          <li><a ref=""><i class="fab fa-facebook-square"></i></a></li>
+          <li><a ref=""><i class="fab fa-youtube"></i></a></li>
+          <li><a ref=""><i class="fab fa-twitter"></i></a></li>
+        </ol>
+
+        <p>ⓒ Copyright Shimabara Shokuhin All Rights Reserved. </p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="logo_info">
+        <a href="main.html"><img src="img/icon_logo_footer.png" alt=""></a>
+        <p>tel : 02-2338-8365</p>
+        <p>e-mail : Succulents Monster@gmail.com </p>
+        <p>address : 104 台北市中山區南京東路三段219號</p>
+        <p>open : 週一至週日 11:00 – 18:30</p>
+
+      </div>
+
+    </article>
+
+  </footer>
+  <!-- footer end -->
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- aos動畫效果 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- bubble_btn動畫效果 -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <!-- <script src="js/bubblebtn.js"></script> -->
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- 自已的js -->
+  <script src="./js/shop.js"></script>
+
+  <!-- 每一個頁面都要引入以下這兩個js -->
+
+  <!-- <script src="./js/shopcart.js"></script> -->
+  <script src="./js/header.js"></script>
+  <script src="./js/qa.js"></script>
+  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js' integrity='sha512-YXLGLsQBiwHPHLCAA9npZWhADUsHECjkZ71D1uzT2Hpop82/eLnmFb6b0jo8pK4T0Au0g2FETrRJNblF/46ZzQ==' crossorigin='anonymous'></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js' integrity='sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==' crossorigin='anonymous'></script>
+
+  <script>
+    const vm = new Vue({
+      el: '#result',
+      data: {
+        data: [],
+        currentPage: 0, //分頁
+        filter: '',
+        newData: [], //分頁
+        visibility: 'all', //分類
+        filterText: "", //搜尋
+        filterArray: [], //搜尋
+        // isShow:true,
+        sortBy: "", //排序
+        isReverse: true,
+        itemStorage: [], //LocalStorage
+        count: 1,
+      },
+      methods: {
+        // 頁數
+        prev() {
+          const vm = this;
+          if (vm.currentPage === 0) {
+            vm.currentPage = 0
+          } else {
+            vm.currentPage--
+          }
+        },
+        next() {
+          const vm = this;
+          if (vm.currentPage === vm.newData.length - 1) {
+            vm.currentPage = vm.newData.length - 1
+          } else {
+            vm.currentPage++
+          }
+        },
+
+        // shop購物車
+        addCar(item) {
+          const vm = this
+            // vm.count++
+          var produ = {
+              pro_id: item.productNO,
+              pro_name: item.productName,
+              pro_price: item.productPrice,
+              pro_count: vm.count,
+              pro_img: item.productImg01,
+              pro_cardcustom: false //確認有無選卡片
+            }
+            // 先檢查有無localStorage
+          let shopcart = JSON.parse(localStorage.getItem("itemStorage"))
+            // console.log(shopcart.length)
+          if (shopcart == null) { //如果沒有就賦予
+            vm.itemStorage.push(produ) //給予空陣列儲存
+            localStorage.setItem("itemStorage", JSON.stringify(vm.itemStorage)) //物件轉字串
+
+          } else { //判斷先前的商品有無重複
+            var space = shopcart.some(function(item) {
+                return item.pro_id === produ.pro_id;
+              })
+              // console.log(space)
+
+            if (space) {
+              for (i = 0; i < shopcart.length; i++) {
+                if (shopcart[i].pro_id == produ.pro_id) {
+                  shopcart[i].pro_count += vm.count
+                }
+              }
+            } else {
+              shopcart.push(produ)
+            }
+            localStorage.setItem("itemStorage", JSON.stringify(shopcart)) //物件轉字串
+              // console.log(vm.itemStorage)
+          }
+        },
+
+        // 照顧難易度>>updated
+        renewPage() {
+          let take_ol = document.getElementsByClassName("shop_card_take");
+          for (let i = 0; i < take_ol.length; i++) {
+            let take_li = take_ol[i].children;
+            if (take_ol[i].getAttribute("data-take") == 1) {
+              // console.log("1", take_li);
+              take_li[2].classList.add("-shop-take");
+              take_li[1].classList.add("-shop-take");
+            } else if (take_ol[i].getAttribute("data-take") == 2) {
+              // console.log("2", take_li);
+              take_li[2].classList.add("-shop-take");
+            } else if (take_ol[i].getAttribute("data-take") == 3) {
+              // console.log("3", take_li);
+              // } else if (take_ol[i].getAttribute("data-take") == "") {
+            } else {
+              // console.log(take_ol[i]);
+              take_ol[i].classList.add("-shop-hei");
+              take_li[0].classList.add("-off");
+              take_li[1].classList.add("-off");
+              take_li[2].classList.add("-off");
+            }
+          }
+        },
+      },
+      computed: {
+        // 分類
+        // categoryData(){
+        filterData() {
+          const vm = this;
+          vm.currentPage = 0;
+          let tempData = [];
+          vm.newData = [];
+          vm.filterArray = [];
+          // let searData =[];
+          let resultData = this.data
+          const perpage = 9;
+          // vm.filterArray =this.data
+          let fil = this.filterText.toLowerCase()
+
+          //   return vm.data
+          //   .filter(function (item) {
+          //   return item.productName.match(vm.filterText);
+          // });
+
+          // switch 
+          // sort 
+          switch (this.visibility) {
+            case 'search':
+              // return this.data.filter(searchResult => searchResult.productName.match(this.filterText));
+              tempData = vm.data.filter((item) => {
+                if (vm.filterText == '') {
+                  return vm.data
+                } else {
+                  return item.productName.toLowerCase().match(fil);
+                }
+              });
+              tempData.forEach((item, i) => {
+                  // this.sun.forEach((item, i) =>{
+                  if (i % perpage == 0) {
+                    vm.newData.push([])
+                  }
+                  const pagenum = parseInt(i / perpage);
+                  vm.newData[pagenum].push(item)
+                })
+                // return vm.data
+              return vm.newData
+              break;
+            case 'all':
+              // return this.data
+              tempData = vm.data.filter((item) => {
+                if (vm.filter === '') {
+                  return vm.data
+                    // 
+                }
+                // else if (vm.filter === item.productType){
+                // return item
+                // }
+                // console.log(tempData)
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '多肉專區':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 1 | item.productType == 2 | item.productType == 3 | item.productType == 4;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '裝飾配件':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 5 | item.productType == 8;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '盆栽器皿':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 6;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '景天科':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 2;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '仙人掌科':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 1;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '百合科':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 3;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+            case '菊科':
+              tempData = vm.data.filter((item) => {
+                return item.productType == 4;
+              });
+              tempData.forEach((item, i) => {
+                // this.sun.forEach((item, i) =>{
+                if (i % perpage == 0) {
+                  vm.newData.push([])
+                }
+                const pagenum = parseInt(i / perpage);
+                vm.newData[pagenum].push(item)
+              })
+              return vm.newData
+              break;
+          }
+          //第二 
+          //     const vm = this;
+          // let category = ''; 
+          // return vm.data.reduce((prev, curr) => {
+          //   console.log(category)
+          //   if(curr.productType !== category) {
+          //     prev.push(curr.productType);
+          //   }
+          //   category = curr.productType;
+          //     console.log(category)
+          //   return prev
+          // },[])
+        },
+        // 頁數
+        // filterData(){
+        // searchData()
+        // 
+        // switch(this.visibility){
+        //     case 'all':
+        //       return this.data
+        //       break;
+        //     case  '多肉專區':
+        //       // this.isShow=false;
+        //       let sun=[]
+        //        sun = this.data.filter(item =>item.productType == 10 | item.productType ==20 | item.productType ==30 | item.productType ==40)
+        //       //  console.log(sun)
+        //       // test start
+        //       // test end
+        //        return this.sun
+        //       break;
+        //     case '裝飾配件':
+        //       return this.data.filter(item =>item.productType == 50)
+        //       break;
+        //     case '盆栽器皿':
+        //       return this.data.filter(item =>item.productType == 60)
+        //       break;
+        //     case '仙人掌科':
+        //       return this.data.filter(item =>item.productType == 10)
+        //       break;
+        //     case '阿福花科':
+        //       return this.data.filter(item =>item.productType == 20)
+        //       break;
+        //     case '番杏科':
+        //       return this.data.filter(item =>item.productType == 30)
+        //       break;
+        //       case '景天科':
+        //       return this.data.filter(item =>item.productType == 40)
+        //       break;
+        //   }
+        // .filter(function (item) {
+        //   console.log(item)
+        //   return item.productName.match();
+        // })
+
+        // }
+      },
+      // 使用axios載json
+      mounted() {
+        axios
+          .get('./php/shop.php')
+          .then(response => {
+            //成功時的處理函數
+            // console.log(response.data[0])
+            // console.log(response.data[0].productType)
+            this.data = response.data
+              // console.log(response.data)
+          })
+          .catch(error => {
+            //失敗時的處理函數
+            console.log(error)
+          })
+      },
+      updated() {
+        this.renewPage();
+
+        // bubble_btn動畫效果
+        // s
+        $(document).ready(function() {
+          $(".button--bubble").each(function() {
+            var $circlesTopLeft = $(this).parent().find(".circle.top-left");
+            var $circlesBottomRight = $(this).parent().find(".circle.bottom-right");
+
+            var tl = new TimelineLite();
+            var tl2 = new TimelineLite();
+
+            var btTl = new TimelineLite({
+              paused: true
+            });
+
+            tl.to($circlesTopLeft, 1.2, {
+              x: -25,
+              y: -25,
+              scaleY: 2,
+              ease: SlowMo.ease.config(0.1, 0.7, false),
+            });
+            tl.to($circlesTopLeft.eq(0), 0.1, {
+              scale: 0.2,
+              x: "+=6",
+              y: "-=2"
+            });
+            tl.to(
+              $circlesTopLeft.eq(1),
+              0.1, {
+                scaleX: 1,
+                scaleY: 0.8,
+                x: "-=10",
+                y: "-=7"
+              },
+              "-=0.1"
+            );
+            tl.to(
+              $circlesTopLeft.eq(2),
+              0.1, {
+                scale: 0.2,
+                x: "-=15",
+                y: "+=6"
+              },
+              "-=0.1"
+            );
+            tl.to($circlesTopLeft.eq(0), 1, {
+              scale: 0,
+              x: "-=5",
+              y: "-=15",
+              opacity: 0,
+            });
+            tl.to(
+              $circlesTopLeft.eq(1),
+              1, {
+                scaleX: 0.4,
+                scaleY: 0.4,
+                x: "-=10",
+                y: "-=10",
+                opacity: 0
+              },
+              "-=1"
+            );
+            tl.to(
+              $circlesTopLeft.eq(2),
+              1, {
+                scale: 0,
+                x: "-=15",
+                y: "+=5",
+                opacity: 0
+              },
+              "-=1"
+            );
+
+            var tlBt1 = new TimelineLite();
+            var tlBt2 = new TimelineLite();
+
+            tlBt1.set($circlesTopLeft, {
+              x: 0,
+              y: 0,
+              rotation: -45
+            });
+            tlBt1.add(tl);
+
+            tl2.set($circlesBottomRight, {
+              x: 0,
+              y: 0
+            });
+            tl2.to($circlesBottomRight, 1.1, {
+              x: 30,
+              y: 30,
+              ease: SlowMo.ease.config(0.1, 0.7, false),
+            });
+            tl2.to($circlesBottomRight.eq(0), 0.1, {
+              scale: 0.2,
+              x: "-=6",
+              y: "+=3"
+            });
+            tl2.to(
+              $circlesBottomRight.eq(1),
+              0.1, {
+                scale: 0.8,
+                x: "+=7",
+                y: "+=3"
+              },
+              "-=0.1"
+            );
+            tl2.to(
+              $circlesBottomRight.eq(2),
+              0.1, {
+                scale: 0.2,
+                x: "+=15",
+                y: "-=6"
+              },
+              "-=0.2"
+            );
+            tl2.to($circlesBottomRight.eq(0), 1, {
+              scale: 0,
+              x: "+=5",
+              y: "+=15",
+              opacity: 0,
+            });
+            tl2.to(
+              $circlesBottomRight.eq(1),
+              1, {
+                scale: 0.4,
+                x: "+=7",
+                y: "+=7",
+                opacity: 0
+              },
+              "-=1"
+            );
+            tl2.to(
+              $circlesBottomRight.eq(2),
+              1, {
+                scale: 0,
+                x: "+=15",
+                y: "-=5",
+                opacity: 0
+              },
+              "-=1"
+            );
+
+            tlBt2.set($circlesBottomRight, {
+              x: 0,
+              y: 0,
+              rotation: 45
+            });
+            tlBt2.add(tl2);
+
+            btTl.add(tlBt1);
+            btTl.to(
+              $(this).parent().find(".button.effect-button"),
+              0.8, {
+                scaleY: 1.1
+              },
+              0.1
+            );
+            btTl.add(tlBt2, 0.2);
+            btTl.to(
+              $(this).parent().find(".button.effect-button"),
+              1.8, {
+                scale: 1,
+                ease: Elastic.easeOut.config(1.2, 0.4)
+              },
+              1.2
+            );
+
+            btTl.timeScale(2.6);
+
+            $(this).on("mouseover", function() {
+              btTl.restart();
+            });
+          });
+        });
+
+        // e
+      }
+
+
+    })
+  </script>
+
+  <!-- swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      spaceBetween: 30,
+      centeredSlides: true,
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+
+    });
+  </script>
+</body>
+
+</html>

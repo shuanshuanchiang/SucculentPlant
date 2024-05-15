@@ -1,0 +1,230 @@
+.front_wrapper{
+    background-image: url(../img/gray_bg.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.front_article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    max-width: 900px;
+    @include pad{
+        width: 90%;
+        flex-direction: column;
+        // height: 80vw;
+        max-height: 770px;
+        justify-content: space-around;
+    }
+    @include mobile{
+        max-height: 80vh;
+    }
+}
+
+.front_box{
+    flex-basis: 43%;
+    @include pad{
+        flex-basis: unset;
+        width: 100%;
+    }
+   
+    a{
+        position: relative;
+    }
+    p{
+        font-size: 42px;
+        font-weight: 700;
+        color:  rgba(209,190,164,1);
+        position: absolute;
+        top: 0;
+        bottom: 80px;
+        left: 30px;
+        right: 0;
+        margin: auto;
+        z-index: 2;
+        // text-shadow: -1px -1px  #333;
+        @include pad{
+            left: 0;
+        }
+    }
+
+    :hover p{
+        color:#d0c3a3;
+        text-shadow: 1px 1px  #fff;
+        
+    }
+    .-front_big{
+        transform: rotate(270deg) scale(1);
+        border: 3px solid rgba(209,190,164,.5);
+      
+    }
+ }
+ 
+.front_circle,.front_circle_b{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    transform: rotate(10deg);
+    border: 3px solid rgba(209,190,164,.7);
+    border-radius: 61% 39% 65% 35% / 39% 59% 41% 61%  ;
+    animation: cc 8s linear infinite;
+    z-index: 1;
+    @include phone{
+        width: 300px;
+        height: 300px;
+    }
+}
+
+.front_box:hover .front_circle,.front_box:hover .front_circle_b{
+    background-color:  rgba(255,255,255,.4);
+}
+
+.front_circle_b{
+    transform: rotate(100deg);
+    animation: cc2 15s linear infinite;
+}
+
+
+//以下是前導頁圈圈
+.-in_right_bottom{
+    right: 0;
+    bottom: 10%;
+ }
+ 
+ .-in_right_top{
+    right: 0;
+    top: 0;
+  
+ }
+ 
+ .-in_left_bottom{
+    left: 0;
+    bottom: 0;
+ }
+ 
+ .-in_left_top{
+    top: 0;
+    left: 10%;
+    @include pad{
+        left: 0;
+    }  
+ }
+ 
+ 
+ .front_circle_block{
+    width: 800px;
+    height: 600px;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    @include pad{
+        width: 100%;
+    }
+    @include mobile{
+        // display: none;
+    }
+ }
+ 
+ .front_circle_green3{
+    width: 100px;
+    height: 100px;
+    border: 3px solid  rgba(151,159,119,.9);
+    // border-radius: 33% 67% 26% 74% / 70% 35% 65% 30% ;
+    animation: circle2 8s linear infinite;
+    position: absolute;
+    left: 35%;
+    bottom: 20px;
+    
+ }
+ 
+ .front_circle_deepgreen{
+    width: 350px;
+    height: 350px;
+    background-color:rgba(106,118,78,.9);
+    // border-radius: 33% 67% 26% 74% / 70% 35% 65% 30% ;
+    animation: circle1 5s linear infinite;
+    position: absolute;
+    right: -60%;
+    bottom: 20px;
+    
+ }
+ 
+ .front_circle_green2{
+    width: 680px;
+    height: 600px;
+    background-color: rgba(47,79,79,.9);
+    animation: circle2 8s linear infinite;
+    position: absolute;
+    left: -25%;
+    bottom: -60%;
+    @include mobile{
+        width: 400px;
+        height: 400px;
+        bottom: -40%;
+    }
+ }
+ 
+ .front_circle_gold{
+    width: 150px;
+    height: 150px;
+    border: 3px solid #d0c3a3;
+    animation: circle1 5s linear infinite;
+    position: absolute;
+    left: 30%;
+    top: 60%;
+    @include mobile{
+        display: none;
+    }
+ }
+ 
+ .front_circle_green1{
+    width: 800px;
+    height: 600px;
+    // background-color: rgba(209,190,164,.8);
+    // border: 5px solid rgba(209,190,164,.5);
+    border: 5px solid rgba(255,255,255,.5);
+    animation: circle1 5s linear infinite;
+    transform: rotate(135deg);
+    position: absolute;
+    left: 50%;
+    top: -70%;
+    
+ }
+ 
+ .circle_yellow{
+    width: 300px;
+    height: 250px;
+    transform: rotate(180deg);
+    background-color: rgba(217, 164, 32, 0.7);
+    animation: circle2 8s linear infinite;
+    position: absolute;
+    left: 0;
+    top: -25%;
+    @include pad{
+        width: 250px;
+        left: -30%;
+        top: -30%;
+    }   
+ }
+
+@keyframes cc2 {
+    0%{border-radius: 47% 57% 46% 54% / 47% 39% 61% 53% ;}
+    25%{border-radius: 58% 40% 52% 48% / 35% 48% 52% 65% ;}
+    50%{border-radius: 61% 39% 65% 35% / 39% 59% 41% 61% ;}
+    75%{border-radius: 64% 36% 62% 38% / 34% 65% 35% 66%  ;}
+    100%{border-radius: 47% 57% 46% 54% / 47% 39% 61% 53% ;}
+}

@@ -1,0 +1,269 @@
+    //這個是取消全部樣式的css
+    @import "./reset";
+    //這個是bubble_btn的css，記得html要引用bubble_btn動畫效果的js & TweenMax
+    @import "./bubblebtn";
+    //----------------以上不要動！！，以下開放自己的sass，按照自己的區塊放(可自己更動區塊名字)-------------------------
+    @import "./var";
+    %ex20px {
+      padding: 20px 0;
+    }
+    
+    .ex20px {
+      @extend %ex20px;
+    }
+    
+    article {
+      @include pad {
+        max-width: 100%;
+      }
+    }
+    
+    body {
+      cursor: default;
+      // color:#eeebeb;
+    }
+    
+    @mixin HM600RWD {
+      @media (max-width: 600px) {
+        @content;
+      }
+    }
+    
+    .handmake_section {
+      display: flex;
+      // justify-content: center;
+      @include pad {
+        flex-direction: column;
+      }
+    }
+    
+    .handmake_left {
+      background-size: contain;
+      font-weight: bold;
+      background-color: map-get($color, "main_g");
+      border-radius: 10px;
+      color: map-get($color, "white");
+      flex: 1;
+      @include pad {
+        display: flex;
+        flex-direction: column;
+        // justify-content: space-around;
+      }
+      h1 {
+        // text-align: left;
+        // margin: 10px 0 10px 50px;
+        @include pad {
+          margin: 10px auto;
+          text-align: center;
+        }
+      }
+    }
+    
+    .HM_class {
+      display: flex;
+      flex-direction: column;
+      margin: 10px 0;
+    }
+    
+    .HM_class_btn {
+      @include pad {
+        // display: flex;
+      }
+      @include HM600RWD {
+        flex-direction: column;
+      }
+      button {
+        width: 70%;
+        background-color: transparent;
+        border-radius: 5px;
+        margin: 5px auto;
+        background-color: map-get($color, "white");
+        border: 1.5px solid #fff;
+        padding: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        @include pad {
+          width: 100px;
+          margin: 5px;
+        }
+        &.active {
+          background-color: map-get($color, "gold");
+          color: map-get($color, "white");
+        }
+        &:hover {
+          background-color: map-get($color, "gold");
+          color: map-get($color, "white");
+        }
+      }
+    }
+    
+    .HM_date_number {
+      margin: 10px 0;
+      @include pad {
+        display: flex;
+      }
+      @include mobile {
+        flex-direction: column;
+      }
+      @include HM600RWD {}
+      .fa-calendar-alt {
+        margin-left: 10px;
+        cursor: pointer;
+      }
+    }
+    
+    .HM_Date {
+      margin: 10px 0;
+      @include pad {
+        margin: 0 auto;
+      }
+      .HM_Date_select {
+        @include pad {
+          margin-top: 5px;
+        }
+        .custom_select {
+          width: auto;
+          padding: 2% 15%;
+          border-radius: 5px;
+          @include pad {
+            width: 100%;
+            padding: 5px 5px;
+          }
+          option {
+            text-align: center;
+          }
+        }
+      }
+    }
+    
+    .HM_Number {
+      margin: 10px 0;
+      h1 {
+        margin: 10px 0;
+      }
+    }
+    
+    .HM_choseNumber {
+      input::-webkit-outer-spin-button,
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+      input[type="number"] {
+        -moz-appearance: textfield;
+      }
+      .number_people {
+        width: 20%;
+        text-align: center;
+        border-radius: 5px;
+        @include pad {
+          width: 10%;
+        }
+      }
+      .fas {
+        margin: 0 10px;
+        cursor: pointer;
+      }
+      .fa-minus {}
+      .fa-plus {}
+    }
+    
+    .handmake_left_text {
+      margin: 10px 0;
+      @include pad {
+        display: none;
+      }
+      span {
+        color: map-get($color, "gold");
+      }
+      h1:nth-child(2) {
+        color: map-get($color, "gold");
+      }
+    }
+    
+    .handmake_right {
+      margin-left: 10px;
+      color: map-get($color, "main_g");
+      @include pad {
+        margin-top: 10px;
+      }
+      h1 {
+        font-weight: bold;
+        margin: 10px;
+      }
+      p {}
+      img {
+        display: block;
+        width: 400px;
+        margin: 0 auto;
+        @include pad {
+          width: 100%;
+        }
+      }
+    }
+    
+    .handmake_right_main {
+      padding-left: 50px;
+      text-align: left;
+      @include pad {
+        padding-left: 0;
+      }
+      p {
+        margin: 10px 40px;
+        text-align: left;
+      }
+      p:nth-child(2) {
+        font-weight: bold;
+      }
+      p:before {
+        content: '';
+        display: block;
+        width: 4px;
+        height: 30px;
+        background-color: map-get($color, "gold");
+        float: left;
+        margin-right: 10px;
+      }
+      li {
+        margin: 10px 30px
+      }
+    }
+    
+    .notice_main {
+      background-color: map-get($color, "white");
+      border-radius: 10px;
+      padding: 10px 0;
+      ul {}
+      li {}
+    }
+    
+    .handmake_left_text_RWD {
+      display: none;
+    }
+    
+    .SignUp {
+      display: block;
+      @include pad {
+        display: none;
+      }
+    }
+    
+    .SignUp_RWD {
+      display: none;
+      @include pad {
+        display: block;
+      }
+    }
+    
+    .handmark_text_RWD {
+      display: none;
+      @include pad {
+        display: block;
+      }
+    }
+    
+    .qa_pos_rwd {
+      display: block;
+      @include pad {
+        display: none;
+      }
+    }

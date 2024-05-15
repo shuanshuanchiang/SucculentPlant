@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>手作課程</title>
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+  <!-- vue cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+  <!-- aos動畫效果 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <!-- 自己的css -->
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+  <div class="header_bg">
+    <div class="headers">
+      <div class="navs">
+        <a href="./main.html"><img src="img/logo.png" alt=""></a>
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+      </div>
+      <ol>
+        <li><a href="./shopCart.html"><i class="fas fa-shopping-basket"></i></a></li>
+        <li><a href="./php/login.php"><i class="fas fa-user member_btn"></i></a></li>
+        <li><a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+
+      </ol>
+      <div class="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- header結束 -->
+  <section class="full_wrapper">
+    <div class="ex"></div>
+    <!-- 用這個來推header的間隔 -->
+    <!-- 麵包屑在這 -->
+    <article>
+      <div class="bread">
+        <a href="./main.html">首頁</a> > <a ref="./HandMake.html">手作課程</a>
+      </div>
+    </article>
+    <!-- article 的內容的安全範圍(1200px)，每個區塊都用一個article包起來 -->
+    <div id="appHD">
+      <article class="article">
+        <div class="handmake_section ex20px">
+          <div class="handmake_left ex20px">
+            <div class="HM_class">
+              <h1>選擇課程</h1>
+              <div class="HM_class_btn">
+                <button class="HDclass01" :class="{'active':handClassIndex === '1'}" @click="getHandClass(1)">手捏陶器 + 多肉組盆</button>
+                <button class="HDclass02" :class="{'active':handClassIndex === '2'}" @click="getHandClass(2)">諧意繪泥 & 療癒植栽</button>
+                <button class="HDclass03" :class="{'active':handClassIndex === '3'}" @click="getHandClass(3)">室內多肉照顧課</button>
+              </div>
+            </div>
+            <div class="HM_Date ">
+              <!-- <h1>選擇日期<i class="fas fa-calendar-alt "></i></h1> -->
+              <h1>選擇日期</h1>
+              <div class="HM_Date_select">
+                <select name="date" class="custom_select" v-model="selectDate">
+                  <option v-for="(item, index) in dateArray" :key="index" :value="item">{{item}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="HM_Number ">
+              <h1>選擇人數</h1>
+              <div class="HM_choseNumber ">
+                <i class="fas fa-minus" @click="minusPeople"></i>
+                <input :value="classPeople" :min="1" :max="info.handClassPeople" class="number_people" @input="changeHandler" />
+                <i class=" fas fa-plus " @click="addPeople "></i>
+              </div>
+            </div>
+            <div class="handmake_left_text ex20px ">
+              <h1>尚於<span></span>人可報名</h1>
+              <h1>課程費用<span>$2800</span>/人</h1>
+            </div>
+            <!-- 黃色bubble按鈕 start -->
+            <div class="bubble_btnn SignUp ">
+              <svg xmlns="http://www.w3.org/2000/svg " version="1.1 " class="goo ">
+                <defs>
+                  <filter id="goo ">
+                    <feGaussianBlur in="SourceGraphic " stdDeviation="10 " result="blur " />
+                    <feColorMatrix in="blur " mode="matrix " values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9 "
+                      result="goo " />
+                    <feComposite in="SourceGraphic " in2="goo " />
+                  </filter>
+                </defs>
+              </svg>
+              <span class="button--bubble__container ">
+                <button @click="applyHdclass" class="button_y button--bubble apply-hdclass">確認報名</button>
+                <!-- <a href=" " class="button_y button--bubble ">確認報名</a> -->
+                <span class="button--bubble__effect-container ">
+                  <span class="circle top-left "></span>
+              <span class="circle top-left "></span>
+              <span class="circle top-left "></span>
+              <span class="button effect-button "></span>
+              <span class="circle bottom-right "></span>
+              <span class="circle bottom-right "></span>
+              <span class="circle bottom-right "></span>
+              </span>
+              </span>
+            </div>
+          </div>
+          <div class='handmake_right'>
+            <img v-if="info.handClassPic " :src=`./img/handclass/${info.handClassPic}` alt=''>
+            <div class='handmake_right_main'>
+              <h1>開課時間/地點</h1>
+              <p>{{info.handClassDate.replace(/,/g, '、')}}</p>
+              <p>台北市大安區金山南路二段123巷50號</p>
+              <h1>課程介紹</h1>
+              <ul>
+                <li>{{info.handClassContent}}</li>
+              </ul>
+              <div class='notice'>
+                <h1>注意事項</h1>
+                <div class='notice_main'>
+                  <ul>
+                    <li>1.開課日前3天,不予退費及更改梯次,如無法參加課程,請將名額轉讓給其他人參加</li>
+                    <li>2.如課程招生未滿或因天災不可抗力因素,我們將於2天前主動聯繫協助更改梯或全額退費</li>
+                    <li>3.若遲到30分鐘則無法參與課程,視同取消</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class='handmake_left_text handmark_text_RWD ex20px'>
+              <h1>尚於<span>{{info.handClassPeople}}</span>人可報名</h1>
+              <h1>課程費用<span>$2800</span>/人</h1>
+            </div>
+            <div class="bubble_btnn SignUp_RWD ">
+              <svg xmlns="http://www.w3.org/2000/svg " version="1.1 " class="goo ">
+                <defs>
+                  <filter id="goo ">
+                    <feGaussianBlur in="SourceGraphic " stdDeviation="10 " result="blur " />
+                    <feColorMatrix in="blur " mode="matrix " values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 19 -9 "
+                      result="goo " />
+                    <feComposite in="SourceGraphic " in2="goo " />
+                  </filter>
+                </defs>
+              </svg>
+              <span class="button--bubble__container ">
+                <button @click="applyHdclass" class="button_y button--bubble apply-hdclass">確認報名</button>
+                <!-- <a href=" " class="button_y button--bubble ">確認報名</a> -->
+                <span class="button--bubble__effect-container ">
+                  <span class="circle top-left "></span>
+              <span class="circle top-left "></span>
+              <span class="circle top-left "></span>
+              <span class="button effect-button "></span>
+              <span class="circle bottom-right "></span>
+              <span class="circle bottom-right "></span>
+              <span class="circle bottom-right "></span>
+              </span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+  <!-- QA仙人掌開始，放在footer上面 -->
+
+  <section class="qa_pos qa_pos_rwd">
+    <div class="qa_wrapper ">
+      <img src="img/QA/QA_LOGO.png " alt=" ">
+    </div>
+    <div class="qaBg_wrapper " id="app ">
+      <div class="qaBg ">
+        <img src="img/QA/QA_close.png " alt=" " class="cancel ">
+        <ul>
+          <li class="question ">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question ">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question ">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <div class="cusQUS ">{{message}}</div>
+          <div class="answer ">we will hope you</div>
+        </ul>
+        <div class="cusQ ">
+          <div class="adimit ">
+            <input type="text " v-model="message ">
+            <button class="btn ">送出</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- QA仙人掌結束 -->
+  <!-- footer start -->
+  <footer>
+    <article>
+      <div class="brand_info ">
+        <ul>
+          <li><a href="./shop.html ">商品專區</a></li>
+          <li><a href="./custom.html ">客製多肉</a></li>
+          <li><a href="./mindtest.html ">心理測驗</a></li>
+          <li><a href="./HandMake.html ">手作課程</a></li>
+          <li><a href="./blog_all.html ">多肉知識</a></li>
+        </ul>
+        <ol>
+          <li><a ref=" "><i class="fab fa-facebook-square "></i></a></li>
+          <li><a ref=" "><i class="fab fa-youtube "></i></a></li>
+          <li><a ref=" "><i class="fab fa-twitter "></i></a></li>
+        </ol>
+        <p>ⓒ Copyright Shimabara Shokuhin All Rights Reserved. </p>
+      </div>
+      <div class="line "></div>
+      <div class="logo_info ">
+        <a href="main.html "><img src="img/icon_logo_footer.png " alt=" "></a>
+        <p>tel : 02-2338-8365</p>
+        <p>e-mail : Succulents Monster@gmail.com </p>
+        <p>address : 104 台北市中山區南京東路三段219號</p>
+        <p>open : 週一至週日 11:00 – 18:30</p>
+      </div>
+    </article>
+  </footer>
+  <!-- footer end -->
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js "></script>
+  <!-- aos動畫效果 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js "></script>
+  <!-- bubble_btn動畫效果 -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js "></script>
+  <script src="js/bubblebtn.js "></script>
+  <!-- 每一個頁面都要引入以下這兩個js -->
+  <script src="./js/shopcart.js "></script>
+  <script src="./js/header.js "></script>
+  <script src="./js/qa.js "></script>
+  <script>
+    new Vue({
+      el: '#appHD',
+      data: {
+        hand_data: [],
+        classPeople: 1,
+        selectDate: '',
+        info: {
+          handClassNO: 0,
+          handClassPic: '',
+          handClassDate: '',
+          handClassContent: '',
+          handClassPeople: 0,
+          handClassPrice: 0,
+          handClassNowPeople: 0,
+          handClassName: ''
+
+        },
+        handClassIndex: 0,
+      },
+      computed: {
+        dateArray() {
+          return this.info.handClassDate.split(',');
+        }
+      },
+      mounted() {
+        this.getHandClass(1);
+
+      },
+      methods: {
+        getHandClass(classNo) {
+          return $.ajax({
+            method: "POST",
+            url: "./php/HDclass.php",
+            data: {
+              classNo,
+            },
+            dataType: "json",
+            error: function(exception) {
+              alert("發生錯誤: " + exception.status);
+            }
+          }).then(res => {
+            this.info = res;
+            this.selectDate = this.dateArray[0];
+            this.handClassIndex = this.info.handClassNO;
+            this.handClassName = this.info.handClassName;
+            this.handClassPrice = this.info.handClassPrice
+          });
+          console.log(res)
+        },
+        minusPeople() {
+          this.classPeople = (this.classPeople - 1) <= 0 ? 1 : this.classPeople - 1;
+        },
+        addPeople() {
+          this.classPeople = (this.classPeople + 1) >= this.info.handClassPeople ? this.info.handClassPeople : this.classPeople + 1;
+        },
+        changeHandler(event) {
+          if (/e/g.test(event.target.value)) {
+            event.target.value = this.classPeople;
+            return;
+          }
+          const value = Number(event.target.value);
+          if (value < 1) {
+            event.target.value = 1;
+            this.classPeople = 1;
+            return;
+          }
+          if (value > this.info.handClassPeople) {
+            event.target.value = this.info.handClassPeople;
+            this.classPeople = this.info.handClassPeople;
+            return;
+          }
+          this.classPeople = value;
+        },
+        // CanApplyPeople() {
+
+        //   // return;
+        //   console.log(this.info.handClassPeople);
+        // },
+        applyHdclass() {
+          const data = {
+            handClassNO: this.info.handClassNO,
+            handClassDate: this.selectDate,
+            handClassPeople: this.classPeople,
+            handClassPrice: this.info.handClassPrice,
+            handClassName: this.handClassName,
+            // handClassNowPeople: this.handClassNowPeople,
+          }
+          this.hand_data.push(data)
+          localStorage.setItem('handClass_apply', JSON.stringify(this.hand_data));
+
+          window.location.href = './shopCart.html';
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

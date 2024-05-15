@@ -1,0 +1,1316 @@
+@mixin pad990 {
+  @media (max-width: 990px) {
+    @content;
+  }
+}
+@mixin pad768 {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin phone414 {
+  @media (max-width: 414px) {
+    @content;
+  }
+}
+
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+//側邊欄
+.order {
+  // outline: 1px solid red;
+  padding: 20px 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: 21vw;
+  height: 100vh;
+  background-color: #2f4f4f;
+  float: right;
+  text-align: center;
+  z-index: 999;
+  display: none;
+  @include pad990() {
+    width: 50vw;
+  }
+  @include phone414() {
+    width: 100vw;
+  }
+  .fa-window-close {
+    color: #d9a420;
+    font-size: 32px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  button {
+    background-color: #d9a420;
+    // outline: 1px solid red;
+    margin-left: 40vw;
+    margin-top: 2vh;
+    border-radius: 5px;
+    border: none;
+    @include phone414() {
+      margin-left: 80vw;
+    }
+  }
+
+  h2 {
+    // outline: 1px solid red;
+    color: white;
+    margin-top: 2vh;
+  }
+  .order_wrapper {
+    // outline: 1px solid green;
+    height: 60vh;
+    overflow-y: scroll;
+  }
+  .order-custom {
+    // outline: 1px solid red;
+    width: 90%;
+    // height: 18vh;
+    padding-bottom: 20px;
+    margin: 20px auto;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    .fa-times {
+      // outline: 1px solid red;
+      float: right;
+      margin: 10px;
+    }
+    .order_custom_con {
+      // outline: 1px solid red;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-start;
+
+      img {
+        width: 100px;
+        height: 100px;
+        @include pad768() {
+          margin-left: 1vh;
+        }
+      }
+      .txt {
+        // height: 12vh;
+        // outline: 1px solid red;
+        font-size: 12px;
+        width: 12vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @include pad990() {
+          width: 30vw;
+        }
+        @include pad768() {
+          margin-left: 1vh;
+        }
+        @include phone414() {
+          width: 60vw;
+        }
+
+        h4 {
+          color: #2f4f4f;
+        }
+        h2 {
+          color: #999;
+          margin-top: 1vh;
+        }
+        p {
+          color: #2f4f4f;
+          margin-top: 1vh;
+        }
+        #app8 {
+          // outline: 1px solid red;
+          width: 5vw;
+          display: flex;
+          margin-top: 1vh;
+          @include pad990() {
+            // outline: 1px solid red;
+            // width: 20vw;
+          }
+          .shop {
+            /* outline: 1px solid red; */
+            width: 90px;
+            height: 2vh;
+            text-align: center;
+            display: flex;
+            @include pad990() {
+              width: 200px;
+            }
+          }
+          .counter {
+            border: 0.5px solid #707070;
+            width: 3vw;
+            height: 2vh;
+            line-height: 2vh;
+            @include pad768() {
+              width: 5vw;
+            }
+            @include phone414() {
+              width: 10vw;
+            }
+          }
+          .fa-plus {
+            /* outline: 1px solid red; */
+            border: 0.5px solid #707070;
+            border-left: none;
+            width: 1vw;
+            height: 2vh;
+            line-height: 2vh;
+            @include pad990() {
+              width: 2vw;
+            }
+            @include phone414() {
+              width: 6vw;
+            }
+          }
+          .fa-minus {
+            /* outline: 1px solid red; */
+            border: 0.5px solid #707070;
+            border-right: none;
+            width: 1vw;
+            height: 2vh;
+            line-height: 2vh;
+            @include pad990() {
+              width: 2vw;
+            }
+            @include phone414() {
+              width: 6vw;
+            }
+          }
+        }
+        .counter {
+          border: 0.5px solid black;
+          width: 30px;
+          height: 30px;
+        }
+        .fa-plus {
+          /* outline: 1px solid red; */
+          border: 0.5px solid black;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+        .fa-minus {
+          /* outline: 1px solid red; */
+          border: 0.5px solid black;
+          width: 30px;
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+    }
+  }
+  .order-custom-pro {
+    width: 90%;
+    // height: 35vh;
+    margin: 20px auto;
+    border-radius: 8px;
+    background-color: rgb(255, 255, 255);
+    padding-bottom: 20px;
+    .fa-times {
+      // outline: 1px solid red;
+      float: right;
+      margin: 10px;
+    }
+    .order_custom_con_con {
+      width: 95%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      // outline: 1px solid red;
+      padding-bottom: 1.5vh;
+      border-bottom: 0.1px solid #2f4f4f;
+
+      img {
+        width: 100px;
+        height: 100px;
+        @include pad768() {
+          margin-left: 1vh;
+        }
+      }
+      .txt {
+        // height: 12vh;
+        // outline: 1px solid red;
+        font-size: 12px;
+        width: 12vw;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        @include pad990() {
+          width: 30vw;
+        }
+        @include pad768() {
+          margin-left: 1vh;
+        }
+        @include phone414() {
+          width: 60vw;
+        }
+        h4 {
+          color: #2f4f4f;
+        }
+        h2 {
+          color: #999;
+          margin-top: 1vh;
+        }
+        p {
+          color: #2f4f4f;
+          margin-top: 1vh;
+        }
+        #app9 {
+          // outline: 1px solid red;
+          width: 5vw;
+          display: flex;
+          margin-top: 1vh;
+          .shop {
+            /* outline: 1px solid red; */
+            width: 90px;
+            height: 2vh;
+            text-align: center;
+            display: flex;
+            @include pad990() {
+              width: 200px;
+            }
+          }
+          .counter {
+            border: 0.5px solid #707070;
+            width: 3vw;
+            height: 2vh;
+            line-height: 2vh;
+            @include pad768() {
+              width: 5vw;
+            }
+            @include phone414() {
+              width: 10vw;
+            }
+          }
+          .fa-plus {
+            /* outline: 1px solid red; */
+            border: 0.5px solid #707070;
+            border-left: none;
+            width: 1vw;
+            height: 2vh;
+            line-height: 2vh;
+            @include pad990() {
+              width: 2vw;
+            }
+            @include phone414() {
+              width: 6vw;
+            }
+          }
+          .fa-minus {
+            /* outline: 1px solid red; */
+            border: 0.5px solid #707070;
+            border-right: none;
+            width: 1vw;
+            height: 2vh;
+            line-height: 2vh;
+            @include pad990() {
+              width: 2vw;
+            }
+            @include phone414() {
+              width: 6vw;
+            }
+          }
+        }
+      }
+    }
+    .detail {
+      font-size: 12px;
+      width: 90%;
+      // outline: 1px solid red;
+      margin: -1vh auto;
+      color: #2f4f4f;
+      text-align: left;
+      padding-left: 1vh;
+      line-height: 2.5vh;
+      h2 {
+        font-size: 12px;
+        color: #2f4f4f;
+      }
+    }
+  }
+  .amount {
+    margin: 5vh auto 2vh;
+    width: 90%;
+    font-size: 12px;
+    // outline: 1px solid red;
+    margin-top: 5vh;
+    padding-bottom: 2vh;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    .coin {
+      //    outline: 1px solid red;
+      display: flex;
+      justify-content: flex-end;
+      p {
+        padding-left: 0.5vw;
+      }
+    }
+    .sale {
+      // outline: 1px solid red;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1vh;
+      color: #d9a420;
+      p {
+        padding-left: 0.5vw;
+      }
+    }
+  }
+  .total {
+    // outline: 1px solid red;
+    margin: 0 auto;
+    width: 90%;
+    font-size: 12px;
+    color: rgb(255, 255, 255);
+    //   outline: 1px solid red;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 1vw 0;
+    h4 {
+      // outline: 1px solid red;
+      margin-right: 1vw;
+    }
+    p {
+      // outline: 1px solid red;
+      font-size: 18px;
+    }
+  }
+  .checkbuy {
+    // outline: 1px solid red;
+    width: 90%;
+    padding: 10px;
+    margin: 0 auto;
+    border: none;
+  }
+}
+//order center
+.order_center {
+  // outline: 1px solid red;
+  width: 950px;
+  height: 100%;
+  // outline: 1px solid red;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // box-sizing: border-box;
+  // display: none;
+  margin: 0 auto;
+  @include pad768() {
+    width: 768px;
+  }
+  @include phone414() {
+    width: 414px;
+  }
+  h2 {
+    margin: 2vh 0;
+    color: #2f4f4f;
+    @include phone414() {
+      margin-right: 5vw;
+    }
+  }
+  .container1 {
+    width: 950px;
+    // height: 880px;
+    height: auto;
+
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    // outline: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    @include pad768() {
+      width: 95vw;
+      //    outline: 1px solid red;
+    }
+    @include phone414() {
+      width: 100vw;
+      margin-left: -5vw;
+      border-radius: 0;
+      //    outline: 1px solid red;
+    }
+    .order_header {
+      width: 90%;
+      margin-top: 4vh;
+      height: 4.5vh;
+      background-color: rgb(37, 80, 78);
+      display: flex;
+      align-items: center;
+      // justify-content: space-around;
+      // outline: 1px solid red;
+      @include phone414() {
+        width: 95vw;
+      }
+      p {
+        font-size: 12px;
+        color: rgb(255, 255, 255);
+
+        @include phone414() {
+          font-size: 10px;
+        }
+      }
+      .data {
+        @include pad768() {
+          margin-left: 9vw;
+        }
+        margin-left: 6vw;
+      }
+      .num {
+        margin-left: 17vw;
+        @include pad768() {
+          margin-left: 17vw;
+        }
+        @include phone414() {
+          margin-left: 15vw;
+        }
+      }
+      .price {
+        margin-left: 5.5vw;
+        @include pad768() {
+          margin-left: 11vw;
+        }
+        @include phone414() {
+          margin-left: 10vw;
+        }
+      }
+      .delete {
+        margin-left: 6.5vw;
+        @include pad768() {
+          margin-left: 11vw;
+        }
+        @include phone414() {
+          margin-left: 12vw;
+        }
+      }
+    }
+    #abc {
+      // outline: 1px solid red;
+      width: 80%;
+      // height: 18vh;
+      // margin-top: 2vh;
+      padding: 20px 0;
+      border-bottom: 1px dotted rgb(37, 80, 78);
+      @include phone414() {
+        width: 95vw;
+        height: auto;
+      }
+      li {
+        display: flex;
+        height: 100%;
+        // margin-top: -2vh;
+        margin-bottom: 50px;
+        img {
+          margin-top: 2vh;
+          width: 50px;
+          height: 50px;
+        }
+        .info {
+          width: 8vw;
+          height: 100%;
+          font-size: 12px;
+          // outline: 1px solid red;
+          margin-left: 0vw;
+          // margin-top: 2vh;
+          @include phone414() {
+            font-size: 8px;
+          }
+          h2 {
+            // outline: 1px solid red;
+            font-size: 12px;
+            color: #245f4d;
+            @include phone414() {
+              font-size: 8px;
+              width: 20vw;
+              text-align: left;
+            }
+          }
+          .cus {
+            // outline: 1px solid red;
+            line-height: 1.6;
+            color: #707070;
+            text-align: left;
+            margin-top: -1vh;
+
+            p {
+              margin-left: 10px;
+            }
+            @include phone414() {
+              h4 {
+                width: 14vw;
+              }
+              p {
+                margin: 0;
+                width: 20vw;
+              }
+            }
+            @include pad768() {
+              h4 {
+                margin-left: 10px;
+              }
+              p {
+                width: 20vw;
+              }
+            }
+          }
+        }
+        .counterNum {
+          width: 6vw;
+          height: 3vh;
+          display: flex;
+          // outline: 1px solid red;
+          margin-left: 10vw;
+          margin-top: 2vh;
+          font-size: 12px;
+          @include pad768() {
+            // outline: 1px solid red;
+            width: 10vw;
+            // margin-left: 8vw;
+          }
+          @include phone414() {
+            margin-left: 15vw;
+            font-size: 8px;
+          }
+          .fa-minus {
+            width: 4vw;
+            border: 1px solid black;
+            border-right: none;
+            text-align: center;
+            line-height: 2vh;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 6vw;
+            }
+          }
+          .counter {
+            width: 6vw;
+            border: 1px solid black;
+            line-height: 2vh;
+            display: flex;
+            justify-content: center;
+            @include pad768() {
+              width: 8vw;
+              // outline: 1px solid red;
+            }
+          }
+          .fa-plus {
+            width: 4vw;
+            border: 1px solid black;
+            border-left: none;
+            text-align: center;
+            line-height: 2vh;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 6vw;
+            }
+          }
+        }
+        .price {
+          margin-left: 3.5vw;
+          margin-top: 2vh;
+          color: #2f4f4f;
+          font-size: 12px;
+          @include pad768() {
+            margin-left: 8vw;
+          }
+          @include phone414() {
+            margin-left: 9vw;
+          }
+        }
+        .delete {
+          margin-top: 2vh;
+          margin-left: 7vw;
+          color: #2f4f4f;
+          @include pad768() {
+            margin-left: 12vw;
+          }
+          @include phone414() {
+            margin-left: 14vw;
+          }
+        }
+      }
+    }
+    #app2 {
+      // outline: 1px solid red;
+      width: 80%;
+      // height: 28vh;
+      border-bottom: 1px dotted rgb(37, 80, 78);
+      padding: 3vh 0;
+      // margin-top: 2vh;
+      @include phone414() {
+        width: 95vw;
+      }
+      li {
+        margin-bottom: 50px;
+        display: flex;
+        height: 100%;
+        margin-top: -2vh;
+        img {
+          margin-top: 2vh;
+          width: 50px;
+          height: 50px;
+        }
+        .info {
+          width: 130px;
+          height: 100%;
+          font-size: 12px;
+          // outline: 1px solid red;
+          margin-left: 1vw;
+          text-align: left;
+          // margin-top: 2vh;
+          @include phone414() {
+            font-size: 8px;
+          }
+          h2 {
+            font-size: 12px;
+            color: #245f4d;
+            @include phone414() {
+              font-size: 8px;
+              width: 20vw;
+              text-align: left;
+            }
+          }
+          .num {
+            line-height: 1.2;
+            color: #245f4d;
+            margin-left: 10px;
+          }
+          .cus {
+            line-height: 1.4;
+            color: #707070;
+            margin-top: 2vh;
+            // outline: 1px solid red;s
+            p {
+              margin-left: 10px;
+            }
+          }
+        }
+        .counterNum {
+          width: 6vw;
+          height: 2vh;
+          display: flex;
+          // outline: 1px solid red;
+          margin-left: 10vw;
+          margin-top: 2vh;
+          font-size: 12px;
+          @include pad768() {
+            // outline: 1px solid red;
+            width: 10vw;
+            margin-left: 8vw;
+          }
+          @include phone414() {
+            margin-left: 5vw;
+            font-size: 8px;
+          }
+          .fa-minus {
+            width: 4vw;
+            border: 1px solid black;
+            border-right: none;
+            text-align: center;
+            line-height: 2vh;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 6vw;
+            }
+          }
+          .counter {
+            width: 6vw;
+            border: 1px solid black;
+            line-height: 2vh;
+            display: flex;
+            justify-content: center;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 8vw;
+            }
+          }
+          .fa-plus {
+            width: 4vw;
+            border: 1px solid black;
+            border-left: none;
+            text-align: center;
+            line-height: 2vh;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 6vw;
+            }
+          }
+        }
+        .price {
+          margin-left: 2.5vw;
+          margin-top: 2vh;
+          color: #2f4f4f;
+          font-size: 12px;
+          @include pad768() {
+            margin-left: 8vw;
+          }
+          @include phone414() {
+            margin-left: 9vw;
+          }
+        }
+        .delete {
+          margin-top: 2vh;
+          margin-left: 5.2vw;
+          color: #2f4f4f;
+          @include pad768() {
+            margin-left: 12vw;
+          }
+          @include phone414() {
+            margin-left: 14vw;
+          }
+        }
+      }
+    }
+
+    #app3 {
+      // outline: 1px solid red;
+      width: 80%;
+      // height: 13vh;
+      // margin-top: 2vh;
+      padding: 20px 0;
+      border-bottom: 1px dotted rgb(37, 80, 78);
+      @include phone414() {
+        width: 95vw;
+      }
+      li {
+        display: flex;
+        height: 100%;
+        margin-top: -2vh;
+        img {
+          margin-top: 2vh;
+          width: 50px;
+          height: 50px;
+        }
+        .info {
+          // width: 130px;
+          height: 100%;
+          font-size: 12px;
+          // outline: 1px solid red;
+          margin-left: 2vw;
+          text-align: left;
+          // margin-top: 2vh;
+          @include phone414() {
+            font-size: 8px;
+          }
+          h2 {
+            font-size: 12px;
+            color: #245f4d;
+            @include phone414() {
+              font-size: 8px;
+              width: 20vw;
+              text-align: left;
+            }
+          }
+          .num {
+            line-height: 1.2;
+            color: #245f4d;
+            margin-left: 10px;
+          }
+          .cus {
+            line-height: 1.4;
+            color: #eeebeb;
+            margin-top: 2vh;
+            p {
+              // outline: 1px solid red;
+              color: #2f4f4f;
+            }
+          }
+        }
+        .counterNum {
+          width: 6vw;
+          height: 2vh;
+          display: flex;
+          // outline: 1px solid red;
+          margin-left: 10vw;
+          margin-top: 2vh;
+          font-size: 12px;
+          @include pad768() {
+            // outline: 1px solid red;
+            width: 10vw;
+            margin-left: 8vw;
+          }
+          @include phone414() {
+            margin-left: 5vw;
+            font-size: 8px;
+          }
+          .fa-minus {
+            width: 4vw;
+            border: 1px solid black;
+            border-right: none;
+            text-align: center;
+            line-height: 2vh;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 6vw;
+            }
+          }
+          .counter {
+            width: 6vw;
+            border: 1px solid black;
+            line-height: 2vh;
+            display: flex;
+            justify-content: center;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 8vw;
+            }
+          }
+          .fa-plus {
+            width: 4vw;
+            border: 1px solid black;
+            border-left: none;
+            text-align: center;
+            line-height: 2vh;
+            @include pad768() {
+              // outline: 1px solid red;
+              width: 6vw;
+            }
+          }
+        }
+        .price {
+          margin-left: 5vw;
+          margin-top: 2vh;
+          color: #2f4f4f;
+          font-size: 12px;
+          @include pad768() {
+            margin-left: 8vw;
+          }
+          @include phone414() {
+            margin-left: 9vw;
+          }
+        }
+        .delete {
+          margin-top: 2vh;
+          margin-left: 6.5vw;
+          color: #2f4f4f;
+          @include pad768() {
+            margin-left: 12vw;
+          }
+          @include phone414() {
+            margin-left: 14vw;
+          }
+        }
+      }
+    }
+    #app4 {
+      // outline: 1px solid red;
+      width: 80%;
+      // height: 10vh;
+      // margin-top: 2vh;
+      padding: 20px 0;
+      border-bottom: 1px dotted rgb(37, 80, 78);
+      @include phone414() {
+        width: 95vw;
+        padding: 20px 0 0;
+      }
+      .trans {
+        font-size: 12px;
+        // outline: 1px solid red;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        @include phone414() {
+          font-size: 10px;
+        }
+        select {
+          font-size: 12px;
+          margin-left: 30px;
+          @include phone414() {
+            font-size: 10px;
+          }
+        }
+      }
+      p {
+        // outline: 1px solid red;
+        font-size: 12px;
+        margin-left: 540px;
+        margin-top: 10px;
+        color: #eeebeb;
+        @include pad768() {
+          margin-left: 420px;
+          width: 22vw;
+        }
+      }
+    }
+    #app5 {
+      width: 80%;
+      // height: 10vh;
+      padding: 20px 0;
+      border-bottom: 1px solid rgb(37, 80, 78);
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      // outline: 1px solid red;
+      justify-content: flex-end;
+      align-items: flex-end;
+      line-height: 1.6;
+      @include phone414() {
+        width: 95vw;
+      }
+
+      .pro {
+        // outline: 1px solid red;
+        @include phone414() {
+          font-size: 10px;
+        }
+        p {
+          color: #2f4f4f;
+        }
+        span {
+          // outline: 1px solid red;
+          margin-left: 10px;
+        }
+        .ship {
+          margin-left: 34px;
+        }
+        .sale {
+          margin-left: 27px;
+        }
+      }
+    }
+    .total {
+      // outline: 1px solid red;
+      margin-left: 620px;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #2f4f4f;
+      @include pad768() {
+        margin-top: 10px;
+        margin-left: 480px;
+      }
+      span {
+        font-size: 20px;
+      }
+    }
+  }
+  .reci_title {
+    margin: 30px auto;
+    display: none;
+    // outline: 1px solid red;
+    @include phone414() {
+      margin-right: 5vw;
+    }
+  }
+  .the_order1 {
+    margin-top: 50px;
+    font-size: 12px;
+    // outline: 1px solid red;
+    @include phone414() {
+      margin-right: 50px;
+    }
+
+    button {
+      border: none;
+      padding: 5px 80px;
+      margin: 0 20px;
+      background-color: #d9a420;
+      color: #2f4f4f;
+      border-radius: 5px;
+      @include phone414() {
+        font-size: 10px;
+        padding: 5px 40px;
+      }
+    }
+  }
+  .container2 {
+    // outline: 1px solid red;
+    // margin-top: 100px;
+    padding-top: 5px;
+    width: 950px;
+    height: 550px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: none;
+    @include pad768() {
+      width: 95vw;
+      // outline: 1px solid red;
+    }
+    @include phone414() {
+      width: 100vw;
+      margin-left: -5vw;
+      border-radius: 0;
+      //    outline: 1px solid red;
+    }
+    ul {
+      #app6 {
+        width: 80%;
+        margin: 0 auto;
+        // outline: 1px solid red;
+        color: #2f4f4f;
+        font-size: 12px;
+        @include phone414() {
+          width: 95vw;
+          font-size: 10px;
+        }
+        h2 {
+          margin: 20px auto;
+          padding: 5px 0;
+          width: 100%;
+          // outline: 1px solid red;
+          color: black;
+          font-size: 12px;
+          text-align: center;
+          background-color: #2f4f4f;
+          color: white;
+          @include phone414() {
+            width: 95vw;
+            font-size: 10px;
+          }
+        }
+        .form-check {
+          // outline: 1px solid red;
+          display: flex;
+          align-items: center;
+          // justify-content: center;
+          label {
+            margin-left: 5px;
+          }
+        }
+        .credit {
+          // outline: 1px solid red;
+          margin: 15px 0 0 25px;
+          text-align: left;
+          input {
+            // outline: 1px solid red;
+            margin-top: 5px;
+            padding: 5px;
+            border: none;
+            background-color: #e9e6e5;
+            text-align: center;
+          }
+        }
+        .date {
+          display: flex;
+          align-items: center;
+          margin: 15px 0 0 25px;
+          .valid {
+            input {
+              margin-top: 5px;
+              width: 60px;
+              border: none;
+              background-color: #e9e6e5;
+              text-align: center;
+              padding: 5px;
+            }
+          }
+          .lastNum {
+            margin-left: 30px;
+            input {
+              margin-top: 5px;
+              width: 50px;
+              border: none;
+              background-color: #e9e6e5;
+              text-align: center;
+              padding: 5px;
+            }
+          }
+        }
+        .form-check2 {
+          // outline: 1px solid red;
+          margin-top: 15px;
+          display: flex;
+          align-items: center;
+          label {
+            margin-left: 5px;
+          }
+          // outline: 1px solid red;
+        }
+      }
+      #app7 {
+        width: 80%;
+        margin: 0 auto;
+        // outline: 1px solid red;
+        color: #2f4f4f;
+        font-size: 12px;
+        @include phone414() {
+          width: 95vw;
+          font-size: 10px;
+        }
+        h2 {
+          margin: 20px auto;
+          padding: 5px 0;
+          width: 100%;
+          // outline: 1px solid red;
+          color: black;
+          font-size: 12px;
+          text-align: center;
+          background-color: #2f4f4f;
+          color: white;
+          @include phone414() {
+            width: 95vw;
+            font-size: 10px;
+          }
+        }
+        .form-check3 {
+          display: flex;
+          align-items: center;
+          label {
+            margin-left: 5px;
+          }
+          // outline: 1px solid red;
+        }
+        .info_name {
+          // outline: 1px solid red;
+          margin-top: 10px;
+          margin-left: 5px;
+          text-align: left;
+          input {
+            margin-left: 10px;
+            border: none;
+            background-color: #e9e6e5;
+            padding: 5px;
+          }
+        }
+        .info_phone {
+          margin-top: 10px;
+          margin-left: 5px;
+          text-align: left;
+          input {
+            margin-left: 10px;
+            border: none;
+            background-color: #e9e6e5;
+            padding: 5px;
+          }
+        }
+        .info_mail {
+          margin-top: 10px;
+          margin-left: 5px;
+          text-align: left;
+          input {
+            margin-left: 10px;
+            border: none;
+            background-color: #e9e6e5;
+            padding: 5px;
+          }
+        }
+        .info_address {
+          margin-top: 10px;
+          margin-left: 5px;
+          text-align: left;
+          input {
+            margin-left: 10px;
+            border: none;
+            background-color: #e9e6e5;
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+.the_order2 {
+  margin-top: 50px;
+  font-size: 12px;
+  display: none;
+  // outline: 1px solid red;
+  @include phone414() {
+    // margin-right: 50px;
+  }
+  button {
+    border: none;
+    padding: 5px 80px;
+    margin: 0 20px;
+    background-color: #d9a420;
+    color: #2f4f4f;
+    border-radius: 5px;
+    @include phone414() {
+      font-size: 10px;
+      padding: 5px 40px;
+    }
+  }
+}
+.orderForm {
+  display: none;
+  width: 760px;
+  height: 370px;
+  margin: 100px auto;
+  background-color: #fff;
+  border-radius: 10px;
+  @include pad768() {
+    width: 95vw;
+    // outline: 1px solid red;
+  }
+  @include phone414() {
+    width: 414px;
+    // outline: 1px solid red;
+    margin-left: -20px;
+    font-size: 10px;
+    height: 200px;
+  }
+  // .fa-check-circle-o {
+  //     // outline: 1px solid red;
+  //     font-weight: 900;
+  //     font-size: 40px;
+  //     width: 40px;
+  //     height: 40px;
+  //     margin-top: 30px;
+  //     color: #2f4f4f;
+  // }
+  .fa-check-circle {
+    // outline: 1px solid red;
+    font-weight: 900;
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    margin-top: 30px;
+    color: #2f4f4f;
+  }
+
+  .recieve {
+    font-size: 14px;
+    margin-top: 30px;
+    @include phone414() {
+      font-size: 12px;
+    }
+  }
+  .orderNum {
+    // outline: 1px solid red;
+
+    font-size: 30px;
+    margin-top: 20px;
+    @include phone414() {
+      font-size: 12px;
+    }
+  }
+  .the_order3 {
+    margin-top: 50px;
+    font-size: 12px;
+  }
+  button {
+    border: none;
+    padding: 5px 80px;
+    margin: 0 20px;
+    background-color: #d9a420;
+    color: #2f4f4f;
+    border-radius: 5px;
+    @include phone414() {
+      font-size: 10px;
+      padding: 5px 40px;
+    }
+  }
+}
+
+// .shop_account {
+//     // outline: 1px solid red;
+//     margin-top: 20px;
+//     width: 50%;
+//     display: flex;
+//     justify-content: space-around;
+//     button {
+//         background-color: #d9a420;
+//         border: none;
+//         width: 10vw;
+//         color: #2f4f4f;
+//         border-radius: 5px;
+//         padding: 6px;
+//     }
+// }

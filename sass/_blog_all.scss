@@ -1,0 +1,109 @@
+.blog_all_top{
+    padding-top: 130px;
+    width: 100%;
+    position: relative;
+    img{
+        width: 100%;
+        height: auto;
+        display: block;
+        z-index: 1;
+    }
+}
+
+article{
+    .blogall_ul{
+        display: flex;
+        width: 1200px;
+        margin: 0 auto;
+        cursor: pointer;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        .blog_word{
+            padding: 5px 5px 15px;
+            background-color: rgba($color: white, $alpha: 0.4);
+            &:hover{
+            background-color: rgba($color: white, $alpha: 1);
+            transition: 0.5s;
+            }
+            img{
+                width: 350px;
+                height: 350px;
+                padding: 10px;
+            }
+            h1{
+                text-align: center;
+                font-size: 16px;
+            }
+            p{
+                font-size: 16px;
+                margin-top: 10px;
+                text-align: center;
+                padding-bottom: 10px;
+            }
+
+        }
+        a{
+            margin-left: 30px;
+            margin-top: 30px;
+        }
+    }
+}
+
+
+
+@media screen and (max-width:768px){
+    .blog_all_top{
+        padding: 0;
+    }
+    article{
+        .blogall_ul{
+            width: 600px;
+            .blog_word{
+                img{
+                    width: 250px;
+                    height: 250px;
+                }
+            }
+           
+        }
+    }
+}
+
+@media screen and (max-width:990px){
+    article{
+        .blogall_ul{
+            width: 100vw;
+            li{
+                margin-left: 80px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:414px){
+   .blog_all_top{
+       img{
+           width: 100vw;
+           height: auto;
+       }
+   }
+    article{
+        .blogall_ul{
+            .blog_word{
+                h1{
+                    font-size: 12px;
+                }
+                p{
+                    font-size: 12px;
+                }
+                img{
+                    width: 150px;
+                    height: 150px;
+                }
+            }
+            li{
+                margin-left: 30px;
+            }
+        }
+    }
+}

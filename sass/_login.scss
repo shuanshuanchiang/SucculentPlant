@@ -1,0 +1,283 @@
+.full_wrapper {
+  position: relative;
+}
+
+.Signin_bg {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+}
+
+.Signin_enter {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 30px;
+  margin: auto;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.Signin_enter_bg {
+  background-color: map-get($color, "main_g");
+  color: map-get($color, "white");
+  margin: 5vh auto;
+  border-radius: 30px;
+  padding: 10px 0;
+  position: relative;
+  max-height: 500px;
+  // z-index: 110;
+}
+
+.Signin_enter_bg_login {
+  display: flex;
+  margin: 0 auto;
+  max-width: 250px;
+  padding: 10px 0;
+  max-height: 300px;
+}
+
+.Signin_enter_bg_login li {
+  // outline: red solid;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.Signin_login {
+  display: none;
+}
+
+.Signin_reg {
+  display: none;
+}
+
+.Signin_block {
+  display: block;
+}
+
+.Signin_login_btn {
+  background-color: map-get($color, "main_g");
+}
+
+.Signin_reg_btn {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.Signin_reg_btn_color {
+  background-color: map-get($color, "main_g");
+}
+
+.Signin_login_btn_color {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.Signin_enter_text span {
+  color: red;
+}
+
+.Signin_enter_bg_x {
+  width: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.Signin_enter_bg_logo {
+  width: 30%;
+  margin-top: 20px;
+}
+
+.Signin_enter_bg a {
+  color: map-get($color, "white");
+  font-size: 1px;
+}
+
+.Signin_enter_text {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.Signin_enter_text li {
+  font-size: 10px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
+}
+
+.Signin_enter_text a {
+  width: 70px;
+}
+
+.Signin_enter_text li input {
+  width: 100%;
+  max-width: 400px;
+  font-size: 10px;
+}
+
+.btn_yellow {
+  width: 60px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 5px;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  background-color: map-get($color, "gold");
+  color: map-get($color, "main_g");
+  font-size: 15px;
+  font-weight: bold;
+  &:hover {
+    background-color: map-get($color, "yellow");
+    color: map-get($color, "main_g");
+    text-decoration: none;
+  }
+}
+
+.Signin_enter_bg .btn_yellow a {
+  // outline: 1px solid red;
+  max-width: 80px;
+  padding: 10px;
+  margin: 5px auto;
+  font-size: 12px;
+}
+
+.Signin_enter_registered {
+  margin: 0 auto;
+  width: 40px;
+}
+
+.Signin_reg span {
+  color: red;
+}
+
+//RWD
+@media (max-width: 768px) {
+  .Signin_enter_bg li {
+    font-size: 15px;
+    margin: 5px 0;
+  }
+  .Signin_enter_bg .bubble_btnn a {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+}
+
+//註冊
+.full_wrapper {
+  position: relative;
+}
+
+.registered_enter {
+  background-color: map-get($color, "main_g");
+  color: map-get($color, "white");
+  width: 60%;
+  max-width: 100px;
+  border-radius: 30px;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.registered_enter_bg {
+  background-color: map-get($color, "main_g");
+  color: map-get($color, "white");
+  margin: 5vh auto;
+  border-radius: 30px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.registered_enter_bg_x {
+  width: 5%;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.registered_enter_bg_logo {
+  width: 30%;
+  margin-top: 10px;
+}
+
+.registered_enter_bg a {
+  color: map-get($color, "white");
+  font-size: 10px;
+}
+
+.registered_enter_text {
+  width: 70%;
+  margin: 0 auto;
+  overflow-y: scroll;
+}
+
+.registered_enter_text {
+  max-height: 400px;
+  // overflow-y: scroll;
+  font-size: 14px;
+}
+
+.registered_enter_text li select {
+  width: 32%;
+}
+
+.registered_enter_text li {
+  font-size: 10px;
+  margin: 0 auto;
+  width: 100%;
+  text-align: left;
+}
+
+.registered_enter_text a {
+  width: 70px;
+}
+
+.registered_enter_text li input {
+  width: 100%;
+  // font-size: 1px;
+}
+
+.registered_enter_bg .bubble_btnn {
+  margin-top: 16px;
+}
+
+.registered_enter_bg .bubble_btnn a {
+  font-size: 1px;
+  width: 100px;
+  padding: 5px;
+}
+
+.registered_enter_registered {
+  margin: 0 auto;
+  width: 40px;
+}
+
+.registered_enter_bg .btn_yellow a {
+  max-width: 80px;
+  padding: 5px;
+  margin-top: 10px;
+}
+
+//RWD
+@media (max-width: 768px) {
+  .registered_enter_bg li {
+    font-size: 15px;
+    margin: 5px 0;
+  }
+  .registered_enter_bg .bubble_btnn a {
+    margin-top: 5px;
+    font-size: 15px;
+  }
+}

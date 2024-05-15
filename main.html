@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>肉多不怪</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./js/bubblebtn.js"></script>
+  <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/top.css">
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+  </link>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- swiper cdn  -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+  <!-- vue cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+
+  <!-- jquery cdn  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+
+</head>
+
+<body>
+
+  <!-- header開始，要放在body下面 -->
+  <div class="header_bg">
+    <div class="headers">
+      <div class="navs">
+        <a href="./main.html"><img src="img/logo.png" alt=""></a>
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+      </div>
+      <ol>
+        <li><a href="./shopCart.html"><i class="fas fa-shopping-basket"></i></a></li>
+        <li><a href="./php/login.php"><i class="fas fa-user" ></i></a></li>
+        <li><a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+      </ol>
+      <div class="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- header結束 -->
+
+
+
+  <!-- 主視覺 -->
+  <main id="main">
+    <div class="intro">
+      <div class="intro_tit"><img src="./img/index/main_tit.png" alt=""></div>
+      <div class="visual-wrap">
+        <div class="visual-list">
+          <div class="item item04 origin"><img src="img/index/plant_05.png" alt=""></div>
+          <div class="item item05 origin"><img src="img/index/plant_04.png" alt=""></div>
+          <div class="item item01 origin"><img src="img/index/plant_01.png" alt=""></div>
+          <div class="item item02 origin"><img src="img/index/plant_02.png" alt=""></div>
+          <div class="item item03 origin"><img src="img/index/plant_03.png" alt=""></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+
+  <div class="main_index_ex"></div>
+
+
+
+  <!-- 多肉介紹輪播 -->
+  <section class="main_plant_box">
+
+    <!-- 背景泡泡動畫-->
+    <div class="circle_block -left_top">
+      <div class="circle_green2"></div>
+      <div class="circle_gold"></div>
+    </div>
+
+    <div class="circle_block -right_bottom">
+      <div class="circle_deepgreen"></div>
+      <div class="circle_green1"></div>
+    </div>
+    <!-- 背景泡泡動畫 end-->
+
+    <h1>Succulents introduction</h1>
+    <p>多肉介紹</p>
+    <div class="main_plant_bg"></div>
+    <div class="main_plant_bg -bigbig"></div>
+
+    <div class="swiper-container plant-container">
+      <div class="swiper-wrapper">
+        <!-- 第一張輪播 -->
+        <div class="swiper-slide plant_slide">
+          <img src="img/index/ss_01.png" alt="">
+          <div class="main_txt">
+            <h2>景天科</h2>
+            <p>景天科青鎖龍屬的多肉植物， 從3-4公分的小型種到近數公尺的大型種都有。 不只大小連外型也各式各樣， 具有類似幾何圖案以及獨特外型的種類等等， 是一種讓人想收集的多肉植物。
+            </p>
+
+            <div class="bubble_btnn -b_ex">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                                <defs>
+                                    <filter id="goo">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                        <feComposite in="SourceGraphic" in2="goo" />
+                                    </filter>
+                                </defs>
+                            </svg>
+
+              <span class="button--bubble__container _y">
+                                <a href="./php/shop.php" class="button_y button--bubble">
+                                    看更多商品
+                                </a>
+                                <span class="button--bubble__effect-container_y">
+                                    <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+
+          </div>
+        </div>
+        <!-- 第一張輪播 -->
+
+        <!-- 第二張輪播 -->
+        <div class="swiper-slide plant_slide">
+          <img src="img/index/ss_02.png" alt="">
+          <div class="main_txt">
+            <h2>仙人掌科</h2>
+            <p>仙人掌具有相當豐富的形狀和大小，並擁優良的保水適應力，多數生長於沙漠及半沙漠等乾燥少雨環境，在美洲的沙漠可以發現。仙人掌為多肉植物的一類，目前仙人掌科的植物有174屬，仙人掌用途廣泛，可作觀賞植物、飼用或飼料，以及其他食物來源。
+            </p>
+
+            <div class="bubble_btnn -b_ex">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                                <defs>
+                                    <filter id="goo">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                        <feComposite in="SourceGraphic" in2="goo" />
+                                    </filter>
+                                </defs>
+                            </svg>
+
+              <span class="button--bubble__container _y">
+                                <a href="./php/shop.php" class="button_y button--bubble">
+                                    看更多商品
+                                </a>
+                                <span class="button--bubble__effect-container_y">
+                                    <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- 第二張輪播 -->
+
+        <!-- 第三張輪播 -->
+        <div class="swiper-slide plant_slide">
+          <img src="img/index/ss_03.png" alt="">
+          <div class="main_txt">
+            <h2>百合科</h2>
+            <p>百合科中，玩家把玩的品種其實非常非常多元，但其中以壽與玉露來的最多，其他還有玉扇、萬象、臥牛和蘆薈。阿福花科其實以前確實是百合科的，只是近年來有了新的分類，不過對於玩家來說，一般還是使用 十二之卷屬來稱呼這些植物。
+            </p>
+
+            <div class="bubble_btnn -b_ex">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                                <defs>
+                                    <filter id="goo">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                        <feComposite in="SourceGraphic" in2="goo" />
+                                    </filter>
+                                </defs>
+                            </svg>
+
+              <span class="button--bubble__container _y">
+                                <a href="./php/shop.php" class="button_y button--bubble">
+                                    看更多商品
+                                </a>
+                                <span class="button--bubble__effect-container_y">
+                                    <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+
+          </div>
+        </div>
+        <!-- 第三張輪播 -->
+
+        <!-- 第四張輪播 -->
+        <div class="swiper-slide plant_slide">
+          <img src="img/index/ss_04.png" alt="">
+          <div class="main_txt">
+            <h2>菊科</h2>
+            <p>菊科植物多為草本，稀木本。葉常互生，無托葉。頭狀花序單生或再排成各種花序，外具一至多層苞片組成的總苞。花萼退化，常變態為毛狀、刺毛狀或鱗片狀，稱為冠毛。菊科中的多肉植物，多形態各異，各有特色，有別於其它科屬的多肉。代表多肉植物有被稱作「小西瓜」的京童子、藍松、佛珠等。
+            </p>
+
+            <div class="bubble_btnn -b_ex">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                                <defs>
+                                    <filter id="goo">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                        <feComposite in="SourceGraphic" in2="goo" />
+                                    </filter>
+                                </defs>
+                            </svg>
+
+              <span class="button--bubble__container _y">
+                                <a href="./php/shop.php" class="button_y button--bubble">
+                                    看更多商品
+                                </a>
+                                <span class="button--bubble__effect-container_y">
+                                    <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <!-- 第四張輪播 -->
+
+
+      </div>
+      <!-- Add Pagination -->
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </section>
+  <!-- 多肉介紹輪播結束 -->
+
+
+
+  <div class="main_index_ex"></div>
+
+
+
+
+  <!-----關於我們------->
+  <section class="main_about_bg">
+
+    <article>
+      <h1 class="main_about_title">About us</h1>
+      <h1 class="main_about_title1">關於我們</h1>
+    </article>
+
+
+    <article>
+      <div class="index_about">
+        <div class="index_about_wra">
+          <div class="index_about_word">
+            <h1>肉多不怪</h1>
+            <p>如果說有一份客製化的禮品，<br> 讓每位收到這份禮物的貴賓都為之驚艷，
+              <br> 而這份禮物又能展現出品牌的獨特性與用心，
+              <br> 還能搭配大家都喜歡的多肉植物，
+              <br> 最好再結合台灣 MIT 的設計，這樣該有多好？<br> 來～多種願望一次滿足，
+              <br> 透過客製化多肉盆栽來幫你完成心願！
+            </p>
+            <div class="bubble_btnn">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                                <defs>
+                                    <filter id="goo">
+                                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                        <feColorMatrix in="blur" mode="matrix"
+                                            values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                        <feComposite in="SourceGraphic" in2="goo" />
+                                    </filter>
+                                </defs>
+                            </svg>
+
+              <span class="button--bubble__container _y">
+                                <a href="./custom.html" class="button_y button--bubble">
+                                    客製多肉盆栽
+                                </a>
+                                <span class="button--bubble__effect-container_y">
+                                    <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+            <img src="./img/index/main_small.png" alt="">
+          </div>
+          <img src="./img/index/main_threeone.png" class="main_about_three">
+        </div>
+        <a href="./custom.html"> <img src="./img/index/main_diy.png" alt="" class="main_about_diy"></a>
+      </div>
+
+    </article>
+
+  </section>
+
+
+
+  <div class="main_index_ex"></div>
+
+
+
+  <!----------產品------------>
+  <article>
+    <div class="index_product">
+      <h1>Product</h1>
+      <h1 class="h1_small">商品專區</h1>
+    </div>
+  </article>
+
+  <!-- 商品區開始 -->
+  <a href="./shop.html">
+    <section class="index_pro_bg box1 ">
+
+      <div class="bg70 in_gray"></div>
+      <div class="bg30"></div>
+      <div class="index_pro_wrapper">
+        <img src="./img/index/pro_01.png" alt="">
+        <div class="index_pro_txt">
+          <h5>Succulents</h5>
+          <p>多肉植物</p>
+        </div>
+        <img src="./img/index/pro_01_s.png" alt="">
+      </div>
+
+    </section>
+  </a>
+
+  <a href="./shop.html">
+    <section class="index_pro_bg box2">
+      <div class="bg70 in_gold"></div>
+      <div class="bg30"></div>
+      <div class="index_pro_wrapper">
+        <img src="./img/index/pro_02.png" alt="">
+        <div class="index_pro_txt">
+          <h5>Decoration</h5>
+          <p>多肉用-飾品</p>
+        </div>
+        <img src="./img/index/pro_02_s.png" alt="">
+      </div>
+    </section>
+  </a>
+
+  <a href="./shop.html">
+    <section class="index_pro_bg box3">
+      <div class="bg70 in_gre"></div>
+      <div class="bg30"></div>
+      <div class="index_pro_wrapper">
+        <img src="./img/index/pro_03.png" alt="">
+        <div class="index_pro_txt">
+          <h5>Utensils</h5>
+          <p>多肉用-器皿</p>
+        </div>
+        <img src="./img/index/pro_03_s.png" alt="">
+      </div>
+    </section>
+  </a>
+  <!-- 商品區結束 -->
+
+
+
+
+  <div class="main_index_ex"></div>
+
+
+
+  <!-------手作工坊-------->
+  <article>
+    <div class="index_diy">
+      <h1>Work Shop</h1>
+      <h1 class="h1_small">手作工坊</h1>
+    </div>
+  </article>
+
+  <!-- Swiper -->
+  <div class="swiper-container index_diy_container">
+    <div class="swiper-wrapper">
+      <!-- 課程輪播1 -->
+      <div class="swiper-slide">
+        <picture class="index_work_box">
+          <source srcset="img/index/workshop_01_mb.png" media="(max-width: 990px)">
+          <img src="img/index/workshop_01.png" alt="">
+          <div class="index_work_txt">
+            <div class="txt_tit">
+              <p class="work_no">01</p>
+              <h3>手捏陶器+多肉組盆</h3>
+              <p class="work_t">開課時間:4/8、4/12、4/24</p>
+              <p class="work_p">每人費用:$<span>2800</span>元</p>
+            </div>
+
+            <div class="bubble_btnn">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                        <defs>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                <feComposite in="SourceGraphic" in2="goo" />
+                            </filter>
+                        </defs>
+                    </svg>
+
+              <span class="button--bubble__container _y">
+                        <a href="./handmake.html" class="button_y button--bubble">
+                            報名課程
+                        </a>
+                        <span class="button--bubble__effect-container_y">
+                            <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+
+          </div>
+        </picture>
+      </div>
+      <!-- 課程輪播1 -->
+
+      <!-- 課程輪播2 -->
+      <div class="swiper-slide">
+        <picture class="index_work_box">
+          <source srcset="img/index/workshop_02_mb.png" media="(max-width: 990px)">
+          <img src="img/index/workshop_02.png" alt="">
+          <div class="index_work_txt">
+            <div class="txt_tit">
+              <p class="work_no">02</p>
+              <h3>諧意繪泥 + 療癒植栽</h3>
+              <p class="work_t">開課時間:4/11、4/15、4/28</p>
+              <p class="work_p">每人費用:$<span>2800</span>元</p>
+            </div>
+
+            <div class="bubble_btnn">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                        <defs>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                <feComposite in="SourceGraphic" in2="goo" />
+                            </filter>
+                        </defs>
+                    </svg>
+
+              <span class="button--bubble__container _y">
+                        <a href="./handmake.html" class="button_y button--bubble">
+                            報名課程
+                        </a>
+                        <span class="button--bubble__effect-container_y">
+                            <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+
+          </div>
+        </picture>
+      </div>
+      <!-- 課程輪播2 -->
+
+      <!-- 課程輪播3 -->
+      <div class="swiper-slide">
+        <picture class="index_work_box">
+          <source srcset="img/index/workshop_03_mb.png" media="(max-width: 990px)">
+          <img src="img/index/workshop_03.png" alt="">
+          <div class="index_work_txt">
+            <div class="txt_tit">
+              <p class="work_no">03</p>
+              <h3>室內多肉照顧課</h3>
+              <p class="work_t">開課時間:4/2、4/3、4/16</p>
+              <p class="work_p">每人費用:$<span>2800</span>元</p>
+            </div>
+
+            <div class="bubble_btnn">
+              <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                        <defs>
+                            <filter id="goo">
+                                <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                                <feColorMatrix in="blur" mode="matrix"
+                                    values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                                <feComposite in="SourceGraphic" in2="goo" />
+                            </filter>
+                        </defs>
+                    </svg>
+
+              <span class="button--bubble__container _y">
+                        <a href="./handmake.html" class="button_y button--bubble">
+                            報名課程
+                        </a>
+                        <span class="button--bubble__effect-container_y">
+                            <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+              <span class="circle top-left"></span>
+
+              <span class="button_y effect-button"></span>
+
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              <span class="circle bottom-right"></span>
+              </span>
+              </span>
+            </div>
+
+          </div>
+        </picture>
+      </div>
+      <!-- 課程輪播3 -->
+
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+
+  <!--   
+  <div class="main_index_ex"></div> -->
+  <div class="main_index_ex"></div>
+
+
+
+  <!-----------部落格-------->
+  <div class="index_blog">
+    <article>
+      <h1>Information</h1>
+      <h1 class="h1_small">多肉知識</h1>
+      <ul class="index_blog_wrapper">
+        <li>
+          <a href="./blog_1.html?id=1">
+            <div class="in_day">植物教學+養護介紹</div>
+            <img src="./img/index/blog_01.png" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="./blog_2.html?id=3">
+            <div class="in_day">銀之鈴-介紹</div>
+            <img src="./img/index/blog_02.png" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="./blog_1.html?id=5">
+            <div class="in_day">桃太郎-介紹</div>
+            <img src="./img/index/blog_03.png" alt="">
+          </a>
+        </li>
+        <li>
+          <a href="./blog_1.html?id=6">
+            <div class="in_day">薄葉藍鳥-介紹</div>
+            <img src="./img/index/blog_04.png" alt="">
+          </a>
+        </li>
+
+      </ul>
+      <div class="bubble_btnn">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="goo">
+                    <defs>
+                        <filter id="goo">
+                            <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                            <feColorMatrix in="blur" mode="matrix"
+                                values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                            <feComposite in="SourceGraphic" in2="goo" />
+                        </filter>
+                    </defs>
+                </svg>
+
+        <span class="button--bubble__container _y">
+                    <a href="./blog_all.html" class="button_y button--bubble">
+                        看更多文章
+                    </a>
+                    <span class="button--bubble__effect-container_y">
+                        <span class="circle top-left"></span>
+        <span class="circle top-left"></span>
+        <span class="circle top-left"></span>
+
+        <span class="button_y effect-button"></span>
+
+        <span class="circle bottom-right"></span>
+        <span class="circle bottom-right"></span>
+        <span class="circle bottom-right"></span>
+        </span>
+        </span>
+      </div>
+    </article>
+
+    <div class="main_index_ex"></div>
+    <div class="main_index_ex -mbonly"></div>
+  </div>
+
+
+
+  <!-- QA仙人掌開始，放在footer上面 -->
+  <section class="qa_pos">
+    <div class="qa_wrapper">
+      <img src="img/QA/QA_LOGO.png" alt="">
+    </div>
+
+    <div class="qaBg_wrapper" id="app">
+      <div class="qaBg">
+        <img src="img/QA/QA_close.png" alt="" class="cancel">
+        <ul>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+
+          <div class="cusQUS">{{message}}</div>
+          <div class="answer">we will hope you</div>
+        </ul>
+
+        <div class="cusQ">
+          <div class="adimit">
+            <input type="text" v-model="message">
+            <button class="btn">送出</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- QA仙人掌結束 -->
+  <!-- footer start -->
+  <footer>
+    <article>
+      <div class="brand_info">
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+
+        <ol>
+          <li><a ref=""><i class="fab fa-facebook-square"></i></a></li>
+          <li><a ref=""><i class="fab fa-youtube"></i></a></li>
+          <li><a ref=""><i class="fab fa-twitter"></i></a></li>
+        </ol>
+
+        <p>ⓒ Copyright Shimabara Shokuhin All Rights Reserved. </p>
+      </div>
+
+      <div class="line"></div>
+
+      <div class="logo_info">
+        <a href="./main.html"><img src="img/icon_logo_footer.png" alt=""></a>
+        <p>tel : 02-2338-8365</p>
+        <p>e-mail : Succulents Monster@gmail.com </p>
+        <p>address : 104 台北市中山區南京東路三段219號</p>
+        <p>open : 週一至週日 11:00 – 18:30</p>
+
+      </div>
+
+    </article>
+
+  </footer>
+  <!-- footer end -->
+  <!-- swiper js -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js">
+  </script>
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- 輪播區域 -->
+  <script>
+    var swiper = new Swiper('.plant-container', {
+      spaceBetween: 0,
+      speed: 2000,
+      loop: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+    });
+
+    var swiper2 = new Swiper('.index_diy_container', {
+      spaceBetween: 0,
+      speed: 2000,
+      slidesPerView: 1,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  </script>
+
+
+  <script>
+    $(document).ready(function() {
+      $('.box1').hover(function() {
+        $(this).find('.bg70').animate({
+          width: '100%'
+        }, 700, "");
+        $(this).find('.bg30').animate({
+          width: '0%'
+        }, 700, "");
+
+      }, function() {
+        $(this).find('.bg70').animate({
+          width: '80%'
+        }, 700, "");
+        $(this).find('.bg30').animate({
+          width: '20%'
+        }, 700, "");
+      });
+
+      $('.box2').hover(function() {
+        $(this).find('.bg70').animate({
+          width: '100%'
+        }, 1000, "");
+        $(this).find('.bg30').animate({
+          width: '0%'
+        }, 700, "");
+
+      }, function() {
+        $(this).find('.bg70').animate({
+          width: '80%'
+        }, 700, "");
+        $(this).find('.bg30').animate({
+          width: '20%'
+        }, 700, "");
+      });
+
+      $('.box3').hover(function() {
+        $(this).find('.bg70').animate({
+          width: '100%'
+        }, 700, "");
+        $(this).find('.bg30').animate({
+          width: '0%'
+        }, 700, "");
+
+      }, function() {
+        $(this).find('.bg70').animate({
+          width: '80%'
+        }, 700, "");
+        $(this).find('.bg30').animate({
+          width: '20%'
+        }, 700, "");
+      });
+
+    });
+  </script>
+  <script type="text/javascript" src="js/plugin/jquery.inview.min.js"></script>
+  <script type="text/javascript" src="js/top.js"></script>
+
+  <!-- 每一個頁面都要引入以下這兩個js -->
+  <!-- <script src="./js/shopcart.js"></script> -->
+  <script src="./js/header.js"></script>
+  <script src="./js/qa.js"></script>
+
+
+</body>
+
+</html>

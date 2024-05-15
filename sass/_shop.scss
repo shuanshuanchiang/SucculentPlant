@@ -1,0 +1,382 @@
+// 引用
+// @import "./reset";
+// @import "./var";
+// @import "./bubblebtn";
+// @import "./mixins";
+
+.btn {
+  @include btn;
+}
+
+// rwd article {
+//   @include pad() {
+//     // width: auto;
+//   }
+// }
+
+// img {
+//   @include pad() {
+//     max-width: 100%;
+//     height: auto;
+//   }
+// }
+
+// 動態
+.-shop-click {
+  background-color: map-get($color, "gray2");
+}
+
+.-show-flex {
+  display: flex;
+}
+
+.-show-block {
+  display: block;
+}
+
+#result .-shop-take {
+  opacity: 0.3;
+}
+
+.-shop-hei {
+  height: 42px;
+}
+
+.page_active {
+  border: 1px solid;
+  border-radius: 50%;
+}
+
+article .-off {
+  display: none;
+}
+
+article .-heart {
+  color: map-get($color, "pink");
+}
+
+// 開始
+.shop_banner {
+  // margin-top: 130px;
+  background-image: url(../img/shop/product_kv1.png);
+  background-size: cover;
+  background-position: center;
+  height: 65vh;
+  // width: auto;
+  background-repeat: no-repeat;
+  @include mobile() {
+    height: 45vh;
+    margin-top: 0;
+  }
+  @include phone() {
+    height: 30vh;
+  }
+}
+.shop_b1 {
+  background-image: url(../img/shop/product_kv2.png);
+}
+.shop_b2 {
+  background-image: url(../img/shop/product_kv3.png);
+}
+// 麵包屑
+article .pro_bread {
+  margin-top: 0;
+}
+
+.shop_note {
+  @include flex() {
+    // justify-content: space-around;
+  }
+  li {
+    background-color: map-get($color, "main_g");
+    flex-grow: 1;
+    &:first-child a {
+      cursor: default;
+    }
+    &:last-child {
+      background-color: map-get($color, "yellow");
+    }
+  }
+  a {
+    padding: 25px 0;
+
+    text-align: center;
+    color: map-get($color, "white");
+    font-size: map-get($fontsize, "big");
+  }
+}
+
+// 篩選
+.shop_filterbox {
+  // padding: 50px 0;
+}
+
+.shop_mainfilter {
+  margin-bottom: 20px;
+  @include flex() {
+    justify-content: space-between;
+  }
+  @include mobile() {
+    // flex-direction: column;
+    // align-items: normal;
+    overflow-y: hidden;
+    overflow-x: scroll;
+    height: auto;
+  }
+
+  li {
+    @include mobile() {
+      margin: 0 10px;
+    }
+  }
+  a {
+    @include flex() {
+      justify-content: space-evenly;
+    }
+    font-size: map-get($fontsize, "big");
+    border: 1px solid #ccc;
+    width: 270px;
+    cursor: pointer;
+    @include pad() {
+      width: 200px;
+    }
+    @include mobile() {
+      // width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  img {
+    width: 50px;
+    @include pad() {
+      // width: 60px;
+    }
+    @include mobile() {
+      // width: 80px;
+    }
+  }
+}
+
+.shop_childfilter {
+  margin-bottom: 20px;
+  @include flex {
+    justify-content: flex-start;
+  }
+  @include mobile() {
+    flex-wrap: wrap;
+  }
+  li {
+    @include mobile() {
+      width: 49%;
+    }
+  }
+  a {
+    @include flex() {
+      justify-content: space-evenly;
+    }
+    font-size: map-get($fontsize, "normall");
+    border: 1px solid #ccc;
+    margin-right: 20px;
+    cursor: pointer;
+    @include mobile() {
+      width: auto;
+      // padding: 10px 20px;
+      margin-bottom: 10px;
+    }
+  }
+  img {
+    width: 50px;
+  }
+  // display: none;
+}
+
+.shop_otherfilter {
+  // text-align: left;
+  display: flex;
+  // display: block;
+  justify-content: space-between;
+
+  @media (max-width: 428px) {
+    display: block;
+  }
+
+  @include phone() {
+    // flex-direction: column;
+    // align-items: flex-start;
+
+    &_select {
+      text-align: left;
+    }
+  }
+
+  select {
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 20px;
+    outline: none;
+    font-size: map-get($fontsize, "normall");
+
+    @media (max-width: 428px) {
+      width: 100%;
+      margin-bottom: 20px;
+      margin-right: 0;
+    }
+
+    // @include phone() {
+    //   width: 100%;
+    //   margin-bottom: 20px;
+    //   margin-right: 0;
+    // }
+    // float: left;
+  }
+  form {
+    // float: right;
+    // width: 100%;
+  }
+}
+
+.shop_search {
+  position: relative;
+  input {
+    outline: none;
+    border-radius: 10px;
+    background-color: map-get($color, "gray2");
+    border: 1px solid #444444;
+    padding: 10px;
+
+    @media (max-width: 428px) {
+      width: 100%;
+    }
+  }
+  button {
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    color: map-get($color, "main_g");
+    background-color: map-get($color, "gray2");
+    transform: translate(-35px);
+    outline: none;
+
+    @media (max-width: 428px) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(-15px, 10px);
+    }
+  }
+}
+
+// 商品
+.shop_main {
+  margin-bottom: 20px;
+  @include flex() {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+}
+
+.shop_card {
+  width: 33.33%;
+  padding: 20px;
+  @include mobile() {
+    width: 50%;
+  }
+
+  @media (max-width: 428px) {
+    width: 100%;
+  }
+
+  // @include phone() {
+  //   width: 100%;
+  // }
+
+  &_tag {
+    @include flex;
+  }
+  &_img {
+    position: relative;
+
+    img {
+      display: block;
+    }
+    button {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: map-get($fontsize, "big");
+      background-color: transparent;
+      outline: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(0, 0, 0, 0.5);
+    }
+  }
+  &_title,
+  &_take,
+  &_price {
+    font-size: map-get($fontsize, "larger");
+  }
+
+  &_price {
+    margin-bottom: 30px;
+  }
+
+  &_take {
+    @include flex;
+    li {
+      margin: 5px;
+    }
+  }
+  &_addcart {
+    background: map-get($color, "main_g");
+    color: map-get($color, "white");
+    width: 100%;
+  }
+}
+
+// 加入購物車按鈕-新增
+.lie {
+  width: 100%;
+}
+
+.shop_card_tag {
+  // @include flex;
+  &_cust,
+  &_new,
+  &_hot {
+    font-size: map-get($fontsize, "small");
+    color: #fff;
+    opacity: 0.7;
+    padding: 5px;
+    position: absolute;
+  }
+  &_new {
+    background: map-get($color, "pink");
+    top: 10px;
+    left: 120px;
+  }
+  &_hot {
+    background: map-get($color, "yellow");
+    top: 10px;
+    left: 20px;
+  }
+}
+
+.shop_pagination {
+  @include flex;
+  li {
+    margin: 0 20px;
+
+    @include phone() {
+      margin: 0 10px;
+    }
+  }
+  a {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    &:hover {
+      border: 1px solid;
+      border-radius: 50%;
+    }
+  }
+}

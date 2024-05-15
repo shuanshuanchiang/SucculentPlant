@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>購物車</title>
+
+  <!-- font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css" integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous"></link>
+
+  <!-- google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <!-- vue cdn  -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.12/vue.js"></script>
+
+  <!-- aos動畫效果 -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
+
+  <!-- 自己的css -->
+
+  <link rel="stylesheet" href="./css/style.css">
+
+  <!-- vue cdn  -->
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.js"></script> -->
+  <!-- jquery cdn  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+
+<body>
+  <!-- header開始，要放在body下面 -->
+  <div class="header_bg">
+    <div class="headers">
+      <div class="navs">
+        <a href="./main.html"><img src="img/logo.png" alt=""></a>
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+      </div>
+      <ol>
+        <li><a href="./shopCart.html"><i class="fas fa-shopping-basket"></i></a></li>
+        <li><a href="./php/login.php"><i class="fas fa-user member_btn"></i></a></li>
+        <li><a href="./php/logout.php"><i class="fas fa-sign-out-alt"></i></a></li>
+
+      </ol>
+      <div class="ham">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </div>
+  <!-- header結束 -->
+
+  <section id="shopcart" class="full_wrapper">
+    <div class="ex"></div>
+    <!-- 用這個來推header的間隔 -->
+
+    <!-- 麵包屑在這 -->
+    <article>
+      <div class="bread">
+        <a href="">首頁</a> > <a href="">購物車</a>
+      </div>
+    </article>
+
+    <!-- article 的內容的安全範圍(1200px)，每個區塊都用一個article包起來 -->
+    <article>
+      <!-- 購物車中間 -->
+      <div class="order_center">
+        <h2>購物車</h2>
+        <div class="container1">
+          <div class="order_header">
+            <p>商品資訊</p>
+            <p class="num">數量</p>
+            <p class="price">價格</p>
+            <p class="delete">刪除</p>
+          </div>
+          <ul v-if="datalist" id="abc">
+            <li v-for="(sli,index) in datalist">
+              <!-- <img src="img/shopcart/assets_5.png" alt=""> -->
+              <img :src="'img/product/'+sli.pro_img" alt="">
+              <!-- <img :src="'img/product/'+pli.productImg01" alt="" /></a> -->
+
+              <div class="info">
+                <h2>{{sli.pro_name}}</h2>
+                <div v-if="sli.pro_cardcustom == true" class="cus">
+                  <h4>賀卡訂製</h4>
+                  <p>收禮人：<span>{{sli.pro_cardReceivePeople}}</span></p>
+                  <p>賀詞內容：<span>{{sli.pro_cardSendText}}</span></p>
+                  <p>賀卡人資訊：<span>{{sli.pro_cardSendPeople}}</span></p>
+                  <p>賀卡樣式：<span>{{sli.pro_cardselect}}</span></p>
+                </div>
+              </div>
+              <div class="counterNum">
+                <i @click="min(sli)" class="fa fa-minus" aria-hidden="true"></i>
+                <div class="counter"> {{sli.pro_count}}</div>
+                <i @click="add(sli)" class="fa fa-plus" aria-hidden="true"></i>
+              </div>
+              <div class="price">
+                {{sli.pro_price}}
+              </div>
+              <div class="delete">
+                <i @click="del(index)" class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </li>
+          </ul>
+          <ul v-if="custdata" id="app2">
+            <li v-for="(cuss,index) in custdata">
+              <img src="img/ss_A00_1.png" alt="">
+              <div class="info">
+                <h2>客製化多肉</h2>
+                <div class="num">
+                  <!-- <p>黃金山多肉<span>*1</span></p> -->
+                  <!-- <p>黃金山多肉<span>*1</span></p> -->
+                  <!-- <p>黃金山多肉<span>*1</span></p> -->
+                  <!-- <p>黃金山多肉<span>*1</span></p> -->
+                  <!-- <p>黃金山多肉<span>*1</span></p> -->
+                </div>
+                <div v-if="cuss.confirmCheck == true" class="cus">
+                  <h4>賀卡訂製</h4>
+                  <p>收禮人：<span>{{cuss.cardReceivePeople}}</span></p>
+                  <p>賀詞內容：<span>{{cuss.card}}</span></p>
+                  <p>送禮人資訊：<span>{{cuss.cardSendPeople}}</span></p>
+                  <p>賀卡樣式：<span>{{cuss.cardTYPE}}</span></p>
+                </div>
+              </div>
+              <div class="counterNum">
+
+                <!-- <i @click="counter += -1" class="fa fa-minus" aria-hidden="true"></i> -->
+                <div class="counter">{{cuss.cardcount}}</div>
+                <!-- <i @click="counter += 1" class="fa fa-plus" aria-hidden="true"></i> -->
+              </div>
+              <div class="price">
+                {{cuss.price}}
+              </div>
+              <div class="delete">
+                <i @click="cus_del(index)" class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </li>
+          </ul>
+          <ul v-if="handdata" id="app3">
+            <li v-for="(hand,index) in handdata">
+              <img src="img/ss_A00_2.png" alt="">
+              <div class="info">
+                <!-- <h2>手作課程</h2> -->
+                <div class="cus">
+                  <!-- <p>手作陶藝＋多肉手作</p> -->
+                  <p>{{hand.handClassName}}</p>
+                  <p>課程日期 <span>{{hand.handClassDate}}</span></p>
+                </div>
+              </div>
+              <div class="counterNum">
+                <!-- <i @click="min(sli)" class="fa fa-minus" aria-hidden="true"></i> -->
+                <!-- <div class="counter"> {{sli.pro_count}}</div> -->
+                <!-- <i @click="add(sli)" class="fa fa-plus" aria-hidden="true"></i> -->
+                <!-- <i @click="min()" class="fa fa-minus" aria-hidden="true"></i> -->
+                <div class="counter">{{hand.handClassPeople}}</div>
+                <!-- <i @click="counter += 1" class="fa fa-plus" aria-hidden="true"></i> -->
+              </div>
+              <div class="price">
+                <!-- $250 -->
+                {{hand.handClassPrice}}
+              </div>
+              <div class="delete">
+                <i @click="hand_del(index)" class="fa fa-trash" aria-hidden="true"></i>
+              </div>
+            </li>
+          </ul>
+          <!-- <ul id="app4">
+                    <div class="trans">
+                        <li>運送方式</li>
+                        <select name="" id="" class="form-control" v-model="selected">
+                            <option value="" disabled>--請選擇--</option>
+                            <option value="">順豐通運NT80</option>
+                            <option value="">順豐通運NT80</option>
+                        </select>
+                    </div>
+                    <p>*單筆消費滿NT1500免運</p>
+                </ul> -->
+          <!-- <ul id="app5">
+                    <div class="pro">
+                        <p>商品金額<span>$3600</span></p>
+                        <p>運費<span class="ship">$80</span></p>
+                        <p>優惠<span class="sale">-$20</span></p>
+                    </div>
+                </ul> -->
+          <p class="total">總金額 <span>{{totalPrice}}</span></p>
+        </div>
+        <div class="the_order1">
+          <button class="conti"> <a href="./shop.html">繼續購物</a></button>
+          <button v-if="member ==''" disabled="disabled"> <a href="./php/login.php">請先登入會員，再進行結帳</a></button>
+          <button v-else class="next">下一步</button>
+        </div>
+
+        <h2 class="reci_title">付款/收件人資訊</h2>
+
+        <div class="container2">
+          <ul>
+            <li id="app6">
+              <h2>付款資訊</h2>
+              <div class="form-check">
+                <!-- <input type="checkbox" value=""> -->
+                <!-- <label>信用卡一次付清</label> -->
+                <span>信用卡一次付清</span>
+              </div>
+              <div class="credit">
+                <p>信用卡卡號</p>
+                <input type="text" class="shopCart_card" placeholder="0000" maxlength="4">
+                <input type="text" class="shopCart_card" placeholder="0000" maxlength="4">
+                <input type="text" class="shopCart_card" placeholder="0000" maxlength="4">
+                <input type="text" class="shopCart_card" placeholder="0000" maxlength="4">
+              </div>
+              <div class="date">
+                <div class="valid">
+                  <p>有效日期</p>
+                  <input class="shopCart_date" type="text" placeholder="MM / YY" maxlength="5">
+                </div>
+                <div class="lastNum">
+                  <p>末3碼</p>
+                  <input type="text" placeholder="123" maxlength="3" class="shopCart_lastnum">
+                </div>
+              </div>
+              <!-- <div class="form-check2">
+                            <input type="checkbox" value="豬">
+                            <label>ATM虛擬帳號</label>
+                        </div> -->
+            </li>
+            <li id="app7">
+              <h2>收件人資訊</h2>
+              <div class="form-check3">
+                <input class="samename" type="checkbox" v-model="checked" @click="checkmem">
+                <label>同會員資料</label>
+              </div>
+              <div class="info_name">
+                <p>姓名 <input type="text" v-model="memberName" class="app7_name"></p>
+              </div>
+              <div class="info_phone">
+                <p>電話 <input type="text" v-model="memberCellPhone" class="app7_phone"></p>
+              </div>
+              <div class="info_mail">
+                <p>信箱 <input type="text" v-model="memberAccount" class="app7_mail"></p>
+              </div>
+              <div class="info_address">
+                <p>地址 <input type="text" v-model="memberAddress" class="app7_address"></p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="the_order2">
+        <button class="pre">上一步</button>
+        <button @click="checkout" class="cofirm">訂單送出</button>
+      </div>
+      <!-- 訂單編號 -->
+      <div class="orderForm">
+        <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+        <!-- <i class="far fa-check-circle"></i> -->
+        <p class="recieve">已收到您的訂單</p>
+        <!-- <p class="orderNum">訂單編號：202101242245</p> -->
+        <p class="orderNum">訂單編號：{{getOrderID}}</p>
+
+        <div class="the_order3">
+
+          <button class="goShop"><a href="./shop.html">前往商城</a></button>
+          <button class="goClub"><a href="./php/member.html">前往會員中心</a></button>
+        </div>
+      </div>
+      <!-- <script src="./js/shopcart.js"></script> -->
+    </article>
+    <!-- 用來調整上下間隔高度的，高度目前設定為100px，一定要放在section裡 -->
+    <div class="ex"></div>
+    <div class="ex"></div>
+  </section>
+
+
+  <!-- QA仙人掌開始，放在footer上面 -->
+  <section class="qa_pos">
+    <div class="qa_wrapper">
+      <img src="img/QA/QA_LOGO.png" alt="">
+    </div>
+
+    <div class="qaBg_wrapper" id="app">
+      <div class="qaBg">
+        <img src="img/QA/QA_close.png" alt="" class="cancel">
+        <ul>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+          <li class="question">
+            <h2>Q:想更換或取消訂單，怎麼辦呢？</h2>
+            <p>A:植栽沒有提供七天鑑賞期，恕無法退貨。</p>
+          </li>
+
+          <div class="cusQUS">{{message}}</div>
+          <div class="answer">we will hope you</div>
+        </ul>
+
+        <div class="cusQ">
+          <div class="adimit">
+            <input type="text" v-model="message">
+            <button class="btn">送出</button>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+  <!-- QA仙人掌結束 -->
+
+  <!-- footer start -->
+  <footer>
+    <article>
+      <div class="brand_info">
+        <ul>
+          <li><a href="./shop.html">商品專區</a></li>
+          <li><a href="./custom.html">客製多肉</a></li>
+          <li><a href="./mindtest.html">心理測驗</a></li>
+          <li><a href="./HandMake.html">手作課程</a></li>
+          <li><a href="./blog_all.html">多肉知識</a></li>
+        </ul>
+
+        <ol>
+          <li><a ref=""><i class="fab fa-facebook-square"></i></a></li>
+          <li><a ref=""><i class="fab fa-youtube"></i></a></li>
+          <li><a ref=""><i class="fab fa-twitter"></i></a></li>
+        </ol>
+
+        <p>ⓒ Copyright Shimabara Shokuhin All Rights Reserved. </p>
+      </div>
+
+      <div class="line"></div>
+      <div class="logo_info">
+        <a href="main.html"><img src="img/icon_logo_footer.png" alt=""></a>
+        <p>tel : 02-2338-8365</p>
+        <p>e-mail : Succulents Monster@gmail.com </p>
+        <p>address : 104 台北市中山區南京東路三段219號</p>
+        <p>open : 週一至週日 11:00 – 18:30</p>
+      </div>
+    </article>
+  </footer>
+  <!-- footer end -->
+
+  <!-- jquery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- aos動畫效果 -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- bubble_btn動畫效果 -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TweenMax.min.js"></script>
+  <script src="js/bubblebtn.js"></script>
+
+  <!-- 每一個頁面都要引入以下這兩個js -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js' integrity='sha512-otOZr2EcknK9a5aa3BbMR9XOjYKtxxscwyRHN6zmdXuRfJ5uApkHB7cz1laWk2g8RKLzV9qv/fl3RPwfCuoxHQ==' crossorigin='anonymous'></script>
+  <script src="./js/header.js"></script>
+  <script src="./js/shopCart_card.js"></script>
+  <script src="./js/qa.js"></script>
+
+  <script>
+    new Vue({
+      el: '#shopcart',
+      data: {
+        datalist: [],
+        handdata: [],
+        custdata: [],
+        member: "",
+        mamberdata: [],
+        counters: 0, //商品數量
+        // total:"" //商品總計
+        checked: false,
+        memberName: '',
+        memberCellPhone: '',
+        memberAccount: '',
+        memberAddress: '',
+        orders: [],
+        getid: ''
+      },
+      methods: {
+        add(sli) {
+          const vm = this;
+          sli.pro_count++
+            // let adddata = JSON.parse(localStorage.getItem("itemStorage"))
+            // adddata.setItem("itemStorage",JSON.stringify(sli.pro_count))
+            // vm.datalist[index].pro_count++
+        },
+        min(sli) {
+          const vm = this;
+          sli.pro_count--
+            sli.pro_count = (sli.pro_count < 1) ? 1 : sli.pro_count
+        },
+
+        del(index) {
+          const vm = this
+          this.datalist.splice(index, 1)
+            // 刪除
+          let newdata = JSON.parse(localStorage.getItem("itemStorage"))
+            // console.log(nl)
+          newdata.splice(index, 1)
+            // console.log(newdata)
+          localStorage.setItem("itemStorage", JSON.stringify(newdata)) //物件轉字串
+        },
+        cus_del(index) {
+          const vm = this
+          this.custdata.splice(index, 1)
+            // 刪除
+          let newdata = JSON.parse(localStorage.getItem("plants"))
+            // console.log(nl)
+          newdata.splice(index, 1)
+            // console.log(newdata)
+          localStorage.setItem("plants", JSON.stringify(newdata)) //物件轉字串
+        },
+        hand_del(index) {
+          const vm = this
+          this.handdata.splice(index, 1)
+            // 刪除
+          let newdata = JSON.parse(localStorage.getItem("handClass_apply"))
+            // console.log(nl)
+          newdata.splice(index, 1)
+            // console.log(newdata)
+          localStorage.setItem("handClass_apply", JSON.stringify(newdata)) //物件轉字串
+        },
+        checkmem() {
+          const vm = this;
+          if (vm.checked) {
+            vm.memberName = "",
+              vm.memberCellPhone = "",
+              vm.memberAccount = "",
+              vm.memberAddress = ""
+
+          } else {
+
+            vm.memberName = vm.member[0].memberName
+            vm.memberCellPhone = vm.member[0].memberCellPhone
+            vm.memberAccount = vm.member[0].memberAccount
+            vm.memberAddress = vm.member[0].memberAddress
+          }
+        },
+
+        // 結帳
+        checkout() {
+          const vm = this
+          let all_data = []
+          let order_array = []
+          let ord_member = vm.member //會員資料
+          let pro_data = vm.datalist //一般商品
+          let cus_data = vm.custdata //客製多肉
+          let hand_data = vm.handdata //手作
+            // let order_totale =vm.totalPrice //總價
+            // let allpro = ord_member.concat(pro_data,cus_data,hand_data,orders)
+            // console.log(allpro)
+            // let 
+
+          ord_member.forEach((item, i) => {
+            all_data.push(item)
+          })
+          pro_data == null ? '' : pro_data.forEach((item, i) => {
+            all_data.push(item)
+          })
+          cus_data == null ? '' : cus_data.forEach((item, i) => {
+            all_data.push(item)
+          })
+          hand_data == null ? '' : hand_data.forEach((item, i) => {
+            all_data.push(item)
+          })
+          let order_info = {
+            order_id: vm.getOrderID, //訂單編號
+            order_totale: vm.totalPrice, //總金額
+            order_pay: "信用卡", //信用卡
+            order_name: vm.memberName, //姓名
+            order_memberCellPhone: vm.memberCellPhone, //電話
+            order_memberAccount: vm.memberAccount, //信箱
+            order_memberAddress: vm.memberAddress, //地址
+          }
+          order_array.push(order_info);
+          all_data.push(order_info);
+          let all_data_j = JSON.stringify(all_data);
+          // console.log(all_data_j);
+          // let orders=[]
+          // orders.push(order_info)
+          // this.orders =orders
+
+
+          // axios({
+          //     method: 'post',
+          //     headers: {'Content-Type':'application/json'},
+          //     url: './php/shopcart_innser.php',
+          //     data:all_data_j,
+          //     // responseType: 'json',
+          //     // responseEncoding: 'utf8',
+          // }).then(res => {
+          //     // console.log(all_data_j)
+          //     // console.log(all_data)
+          //     console.log(res)
+          // })
+          // .catch(error => {
+          // console.log(error)
+          // });
+          axios
+            .post('./php/shopcart_innser.php', {
+              // allData:all_data_j,
+              // allData2:XXXx,
+              order_all: order_array,
+              member_all: ord_member,
+              pro_all: pro_data,
+              cus_all: cus_data,
+              hand_all: hand_data,
+            })
+            .then(res => {
+              // console.log(res.data);
+              // console.log(all_data_j)
+              console.log(res.data);
+              // console.log(res.data[0])
+              // vm.member = res.data;
+            })
+            .catch(error => {
+              //失敗時的處理函數
+              console.log(error)
+            })
+
+          localStorage.removeItem("itemStorage");
+          localStorage.removeItem("plants");
+          localStorage.removeItem("handClass_apply");
+        },
+
+      },
+      computed: {
+        // 結帳
+        totalPrice() {
+          const vm = this
+          let tp = 0
+            // 寫法一
+          vm.datalist == null ? '' : vm.datalist.forEach((item, i) => {
+            tp += item.pro_price * item.pro_count
+          })
+          vm.custdata == null ? '' : vm.custdata.forEach((item, i) => {
+            tp += item.price
+          })
+
+          vm.handdata == null ? '' : vm.handdata.forEach((item, i) => {
+            tp += item.handClassPrice * item.handClassPeople
+          })
+
+          return tp
+
+          // 寫法二
+          // for(let i=0;i<vm.datalist.length;i++){
+          //     totalPrice += vm.datalist[i].pro_price * vm.datalist[i].pro_count ;
+          // }
+          // return totalPrice;
+          // console.log(totalPrice)
+        },
+        getOrderID() {
+          const projectTime = new Date() // 
+            // console.log((+new Date()))
+            // console.log(projectTime.getTime())
+          const num = Math.round(projectTime.getTime() / 1000).toString()
+            // console.log(num)
+          return num
+        },
+
+
+      },
+      mounted() {
+        const vm = this;
+        // 商品
+        var shopdata = JSON.parse(localStorage.getItem("itemStorage"));
+        // console.log(shopdata)
+        vm.datalist = shopdata;
+        // this.del(index)
+
+        // 課製
+        var shopdata = JSON.parse(localStorage.getItem("plants"));
+        vm.custdata = shopdata;
+
+        // 手作
+        var shopdata = JSON.parse(localStorage.getItem("handClass_apply"));
+        vm.handdata = shopdata;
+        // 判斷會員
+        axios
+          .get('./php/shopcart.php')
+          .then(res => {
+            // console.log(res.data);
+            // console.log(res);
+            // console.log(res.data[0])
+            vm.member = res.data;
+          })
+          .catch(error => {
+            //失敗時的處理函數
+            console.log(error)
+          })
+      },
+      updated() {
+        // this.del()
+      },
+      // created(){
+      //     let ordernum = this.getProjectNum()
+      //     console.log(ordernum)
+      // }
+    });
+    // var app = new Vue({
+    //     el: '#app2',
+    //     data: {
+    //         counter: 0,
+    //     }
+    // })
+    // var app = new Vue({
+    //     el: '#app3',
+    //     data: {
+    //         counter: 0,
+    //     }
+    // })
+    // 繼續購物、下一步、上一步、訂單送出
+    $(document).ready(function() {
+      // $(".next").on("click",function(){
+      $(`article`).on("click", ".next", function(e) {
+
+          $(".container2").slideDown("slow");
+          $(".the_order1").hide();
+          $(".reci_title").show();
+          $(".the_order2").show();
+        })
+        // $(".pre").on("click",function(){
+      $(`article`).on("click", ".pre", function(e) {
+
+          $(".container2").hide();
+          $(".reci_title").hide();
+          $(".the_order2").hide();
+          $(".the_order1").show();
+        })
+        // $(".cofirm").on("click",function(){
+      $(`article`).on("click", ".cofirm", function(e) {
+
+        let shop_cart_confirm = document.getElementsByClassName("cofirm")[0];
+        let shopcart_card = document.getElementsByClassName("shopCart_card");
+        let shopCart_date = document.getElementsByClassName("shopCart_date")[0].value;
+        let shopCart_lastnum = document.getElementsByClassName("shopCart_lastnum")[0].value;
+
+        let app7_name = document.getElementsByClassName("app7_name")[0].value;
+        let app7_phone = document.getElementsByClassName("app7_phone")[0].value;
+        let app7_mail = document.getElementsByClassName("app7_mail")[0].value;
+        let app7_address = document.getElementsByClassName("app7_address")[0].value;
+        // for (let i = 0; i < shopcart_card.length; i++) {
+        if (shopcart_card[0].value == "" || shopcart_card[1].value == "" || shopcart_card[2].value == "" || shopcart_card[3].value == "") {
+          alert("信用卡號不能為空值");
+          // this.shopCart_card[i].focus();
+          // console.log(shopcart_card[i]);
+          e.preventDefault();
+          return false;
+        } else if (app7_name == "" || app7_phone == "" || app7_mail == "" || app7_address == "") {
+          alert("會員資料不能為空值");
+          return false;
+        } else if (shopCart_date == "" || shopCart_lastnum == "") {
+          alert("有效日期&末三碼不能為空值");
+          return false;
+        } else {
+          // console.log(info_name_input[0]);
+          $(".container2").hide();
+          $(".container1").hide();
+          $(".reci_title").hide();
+          $(".the_order2").hide();
+          $(".order_center h2").hide();
+          $(".the_order1").hide();
+          $(".orderForm").show();
+        }
+        // }
+
+      })
+    })
+  </script>
+
+
+
+</body>
+
+</html>

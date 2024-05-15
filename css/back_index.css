@@ -1,0 +1,486 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-image: url(../img/gray_bg.png);
+  cursor: default;
+}
+
+header {
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: #ffffff;
+  font-weight: bold;
+}
+
+header img {
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  margin-left: 2vw;
+}
+
+header h1 {
+  font-size: 2rem;
+  color: #d0c3a3;
+  line-height: 100px;
+  margin-left: 20px;
+}
+
+header a {
+  font-size: 15px;
+  font-weight: bold;
+  color: #d0c3a3;
+  line-height: 100px;
+  margin-left: auto;
+  margin-right: 50px;
+}
+
+header a:hover {
+  color: #d87680;
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.section_main {
+  display: flex;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+.section_main #submitBtn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.section_main #submitBtn:hover {
+  background-color: #d9a420;
+  color: #2f4f4f;
+  text-decoration: none;
+}
+
+.section_main img {
+  display: block;
+  width: 100px;
+}
+
+.left_list {
+  width: 15%;
+}
+
+.left_btn li {
+  margin-bottom: 15px;
+}
+
+.leftBtn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 150px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #2f4f4f;
+  font-size: 20px;
+  border: 1px solid #eeebeb;
+  border-radius: 10px;
+  font-weight: bold;
+  color: #d0c3a3;
+}
+
+.leftBtn:hover {
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.a_click {
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+}
+
+.right_main {
+  width: 85%;
+  margin-left: 20px;
+  color: #000;
+  overflow: visible;
+  height: auto;
+}
+
+.right_main h1 {
+  font-size: 30px;
+  color: #2f4f4f;
+  margin-bottom: 5px;
+}
+
+.right_main .bottom_line {
+  width: 200px;
+  height: 2px;
+  background-color: #d9a420;
+  margin-bottom: 20px;
+}
+
+.right_main a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.table_div .table {
+  font-size: 20px;
+  text-align: center;
+}
+
+.table_div a {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.table_div a:hover {
+  color: #d87680;
+}
+
+.inserBtn {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.inserBtn:hover {
+  background-color: #d9a420;
+  color: #2f4f4f;
+  text-decoration: none;
+}
+
+.cancel_check {
+  display: flex;
+  justify-content: center;
+}
+
+.cancel_check input {
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px;
+}
+
+.cancel_check input:hover {
+  background-color: #d9a420;
+  color: #2f4f4f;
+  text-decoration: none;
+}
+
+.search_name h2 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.search_name .search_text {
+  margin-bottom: 10px;
+}
+
+.table tr {
+  font-weight: bold;
+}
+
+.table td {
+  border-top: none;
+}
+
+.table img {
+  margin: 0 auto;
+}
+
+.Sign_div {
+  width: 1200px;
+}
+
+.Sign_div h1 {
+  font-size: 30px;
+  color: #2f4f4f;
+  margin-bottom: 5px;
+  text-align: center;
+  margin-top: 100px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.Sign_div form {
+  margin: 0 auto;
+  width: 300px;
+  border-radius: 10px;
+  border: 1px solid #d0c3a3;
+  background-color: #2f4f4f;
+}
+
+.Sign_table {
+  margin: 10px auto;
+  color: #eeebeb;
+}
+
+.Sign_table td {
+  padding: 5px 35px;
+}
+
+.toggle_icon {
+  margin-left: 3px;
+}
+
+.toggle_iconP {
+  margin-left: 3px;
+}
+
+.sign_div {
+  display: flex;
+  justify-content: center;
+}
+
+.to_index {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+  font-size: 15px;
+  font-weight: bold;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  margin: 5px 5px 20px;
+}
+
+.to_index:hover {
+  background-color: #d9a420;
+  color: #2f4f4f;
+  text-decoration: none;
+}
+
+.sign {
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  width: 100px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #d0c3a3;
+  color: #2f4f4f;
+  font-size: 15px;
+  font-weight: bold;
+  width: 80px;
+  height: 40px;
+  line-height: 40px;
+  margin: 5px 5px 20px;
+}
+
+.sign:hover {
+  background-color: #d9a420;
+  color: #2f4f4f;
+  text-decoration: none;
+}
+
+.table_hand .fas {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.table_hand td:nth-child(2) {
+  width: 450px;
+}
+
+.table__hideText {
+  display: block;
+  text-align: center;
+  height: 200px;
+  overflow-y: scroll;
+}
+
+.hand_content {
+  display: none;
+}
+
+.table_div_knowEdit textarea {
+  overflow: auto;
+}
+
+.table_div_knowCreat textarea {
+  overflow: auto;
+}
+/*# sourceMappingURL=back_index.css.map */
